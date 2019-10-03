@@ -1,0 +1,12 @@
+
+
+Code Coverage Report:    
+  2019-10-03 17:19:43    
+                         
+ Summary:                
+  Classes: 10.00% (1/10) 
+  Methods:  7.14% (2/28) 
+  Lines:    4.81% (9/187)
+
+ParserTest
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  9/  9)
