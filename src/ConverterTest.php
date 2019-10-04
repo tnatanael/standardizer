@@ -5,14 +5,59 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 
 use Standardizer\Converter;
-use Standardizer\Exporter;
 use Standardizer\Factories\ExporterFactory;
 use Standardizer\Factories\ParserFactory;
 use Standardizer\Filesystem;
 
 final class ConverterTest extends TestCase
 {
+    private $emptyFileToExport = 'tests/assets/empty.xls';
     private $fileToCutTest = 'tests/assets/cut.txt';
+
+    public function testCanICreateAConverterInstance(): Converter
+    {
+        // Create the parser instance
+        $parser = ParserFactory::create('testing');
+
+        // Create the exporter instance
+        $exporter = ExporterFactory::create($this->emptyFileToExport);
+
+        // Create the converter instance
+        $converter = new Converter($parser, $exporter);
+
+        $this->assertInstanceOf(
+            Converter::class,
+            $converter
+        );
+
+        return $converter;
+    }
+
+    public function testCanIConvertAXlsFile(): void
+    {
+        // Create the parser instance
+        $parser = ParserFactory::create('testing');
+
+        // Create the exporter instance
+        $exporter = ExporterFactory::create('tests/assets/test.xls');
+
+        // Create the converter instance
+        $converter = new Converter($parser, $exporter);
+
+        $converter->run();
+    }
+
+    /**
+     * @depends testCanICreateAConverterInstance
+     */
+    public function testCanIGetFieldsToImplode(Converter $converter): void
+    {
+        $this->assertEquals([
+            "split_and_equals_test",
+            "number_test",
+            "phone_test"
+        ], $converter->getFieldsToImplode());
+    }
 
     public function testCanICutRandomTopLines() : void
     {

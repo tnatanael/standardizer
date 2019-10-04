@@ -79,7 +79,7 @@ class Filesystem
     public static function createResource(string $path)
     {
         // Get the output folder from config
-        $outputFolder = config('converters')->get('output_folder');
+        $outputFolder = config('global')->get('output_folder');
         return fopen($outputFolder.$path, "w");
     }
 

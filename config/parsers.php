@@ -11,9 +11,9 @@ $config = [
          */
         'discard_bottom' => 0, // Default 0 dont discard any bottom lines
         /**
-         * The number of lines to index before start parsing the content
+         * The number of lines to sumarize before start parsing the content
          */
-        'row_counter' => 1, // Default 1 parse input file line by line
+        'data_line_count' => 1, // Default 1 parse input file line by line
         /**
          * Mapper configuration rules
          * See more in: http://todo

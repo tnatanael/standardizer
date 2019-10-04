@@ -12,35 +12,32 @@ class Exporter
 {
     // Properties
     protected $inputFilePath;
-    protected $inputFileInfo;
+    protected $inputFileInfo = [];
 
-    protected $outputFilePath;
     protected $rawFilePath;
-
-    // Local config cache
-    protected $config;
 
     /**
      * Class constructor.
      */
     public function __construct(string $inputFilePath)
     {
-        // Load global config to local cache
-        $this->config = config('global');
         // Input file path
         $this->inputFilePath = $inputFilePath;
         // Get file info from file path
         $this->inputFileInfo = Filesystem::getInfo($inputFilePath);
 
-        // Create the output file path
-        $this->outputFilePath = str_replace(
-            $this->inputFileInfo['extension'],
-            $this->config->get('output_type'),
-            $this->inputFilePath
-        );
-
         // Create the temp file path
-        $this->tempFilePath = $this->config->get('temp_folder').'raw.csv';
+        $this->tempFilePath = config('global')->get('temp_folder').'raw.csv';
+    }
+
+    /**
+     * Return inputFileInfo
+     *
+     * @return array 
+     **/
+    public function getInputFileInfo() : array
+    {
+        return $this->inputFileInfo;
     }
 
     /**
@@ -59,7 +56,7 @@ class Exporter
         $spreadsheet = $reader->load($this->inputFilePath);
 
         // Create the writer factory instance
-        $writer = WriterFactory::create($spreadsheet, $this->outputFilePath);
+        $writer = WriterFactory::create($spreadsheet);
 
         // Save temp conversion output
         $writer->save($this->tempFilePath);

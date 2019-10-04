@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:    
-  2019-10-04 13:17:23    
+  2019-10-04 17:16:07    
                          
  Summary:                
-  Classes: 10.00% (1/10) 
-  Methods:  3.85% (1/26) 
-  Lines:    3.35% (6/179)
+  Classes:  0.00% (0/10) 
+  Methods:  3.45% (1/29) 
+  Lines:    3.65% (7/192)
 
-ConverterFactoryTest
-  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+ConverterTest
+  Methods:  12.50% ( 1/ 8)   Lines:  14.58% (  7/ 48)

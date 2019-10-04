@@ -11,10 +11,9 @@ use Standardizer\Parser;
  */
 class Converter
 {
-    protected $inputFilePath;
-    protected $inputFileInfo;
-
+    protected $outputFolder;
     protected $outputFile;
+    protected $outputFilePath;
 
     protected $tempFilePath;
 
@@ -32,6 +31,13 @@ class Converter
 
         // Get the output folder from config
         $this->outputFolder = config('global')->get('output_folder');
+
+        // Create the output file path
+        $this->outputFilePath = str_replace(
+            $this->exporter->getInputFileInfo()['extension'],
+            config('global')->get('output_type'),
+            $this->exporter->getInputFilePath()
+        );
     }
 
     /**
@@ -44,7 +50,7 @@ class Converter
     {
         // Create file for converted output
         $this->outputFile = Filesystem::createResource(
-            $this->outputFolder.basename($this->outputFilePath)
+            basename($this->outputFilePath)
         );
 
         // Write header to converted output file based on standard
@@ -53,20 +59,34 @@ class Converter
             implode(',', $this->getFieldsToImplode())
         );
 
+        // Execute exporter
+        $this->exporter->run();
+
         // Get the raw csv lines
-        $lines = Filesystem::getLines($this->rawFilePath);
+        $lines = Filesystem::getLines($this->exporter->getTempFilePath());
+
+        // Parser options bind
+        $options = $this->parser->options;
 
         //Execute default steps
-        $lines = self::cutTop($lines, $this->getCutTop());
-        $lines = self::cutBottom($lines, $this->getCutBottom());
-        $lines = self::cutContains($lines, $this->standard['discard']);
-        $lines = self::cutEquals($lines, $this->standard['discard_equals']);
+        $lines = self::cutTop($lines, $options->get('discard_top'));
+        $lines = self::cutBottom($lines, $options->get('discard_bottom'));
+        $lines = self::cutContains($lines, $options->get('discard_contains'));
 
-        //Execute line concatenation rule
-        $lines = self::concatenateLines($lines, $this->getConcatEvery());
+        //Execute line sumarization rule
+        $lines = self::summarizeLines($lines, $options->get('data_line_count'));
+
+        dd($lines);
 
         //Run the parser logic implemented by the child
-        $lines = $this->parse($lines);
+        $parsedLines = [];
+
+        foreach($lines as $lineText)
+        {   
+            $parsedLines[] = $this->parser->parseLines($lineText);
+        }
+
+        dd($parsedLines);
     }
 
     /**
@@ -136,35 +156,22 @@ class Converter
     }
 
     /**
-     * Discard lines that text is equals
+     * Fields to generate the title line
      *
-     * @param array $lines The lines to check
-     * @param array $needles The array of strings to find
-     * @return array New lines array
-     **/
-    public function cutEquals(array $lines, array $needles)
-    {
-        // Check for discard lines with unwanted text
-        foreach($lines as $key => $line)
-        {
-            foreach($needles as $needle) {
-                if ($line == $needle) {
-                    unset($lines[$key]);
-                }
-            }
-        }
-        
-        return array_values($lines);
+     * @return array
+     */
+    public function getFieldsToImplode(): array { 
+        return array_keys($this->parser->options->get('mapper'));
     }
 
     /**
-     * Concatenate lines to simplify parsing
+     * Summarize lines to simplify parsing
      *
      * @param array $var Description
      * @param int $every Description
      * @return array New lines array
      **/
-    public static function concatenateLines(array $lines, int $every)
+    public static function summarizeLines(array $lines, int $every)
     {
         // No need to run concatenation in this case
         if ($every == 1) return $lines;
@@ -174,21 +181,21 @@ class Converter
         // Line concatenation index
         $index = 0;
         // Line concatenation buffer
-        $toWrite = '';
+        $toWrite = [];
         foreach($lines as $key => $line) {
             // Increade key to start from 1 instead of 0
             $key++;
 
             // Concatenate line to write
-            $toWrite .= $line;
+            $toWrite[] = $line;
 
             // Check for line concatenation moment
             if (($index+$every) == $key) {
                 $result[] = $toWrite;
                 // Set the current position as concatenation index
                 $index = $key;
-                // Clean concatenation buffer
-                $toWrite = '';
+                // Clean summarization buffer
+                $toWrite = [];
             }
         }
         return $result;

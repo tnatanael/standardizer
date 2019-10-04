@@ -12,7 +12,7 @@ final class FilesystemTest extends TestCase
     public function testCanReadInputFolderRecursive(): void
     {
         $this->assertIsArray(
-            Filesystem::scanAllDir('input')
+            Filesystem::scanAllDir('tests/assets')
         );
     }
 
@@ -41,7 +41,7 @@ final class FilesystemTest extends TestCase
         $resource = Filesystem::createResource($file);
         $this->assertIsResource($resource);
 
-        $outputFolder = config('converters')->get('output_folder');
+        $outputFolder = config('global')->get('output_folder');
         $this->assertFileExists($outputFolder.$this->tempResource);
 
         return $resource;
@@ -56,7 +56,7 @@ final class FilesystemTest extends TestCase
         Filesystem::writeLine($resource, $stringToWrite);
         Filesystem::closeResource($resource);
 
-        $outputFolder = config('converters')->get('output_folder');
+        $outputFolder = config('global')->get('output_folder');
 
         $this->assertStringEqualsFile(
             $outputFolder.$this->tempResource,

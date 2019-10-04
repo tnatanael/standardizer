@@ -13,7 +13,17 @@ $config = [
         /**
          * The number of lines to index before start parsing the content
          */
-        'row_counter' => 1,
+        'data_line_count' => 1,
+        /**
+         * Discard every line that contains this values
+         */
+        'discard_contains' => [
+            //
+        ],
+        /**
+         * When this string was found, the file processing ends!
+         */ 
+        'end_file_string' => 'rodape',
         /**
          * Mapper configuration rules
          * See more in: http://todo
@@ -42,16 +52,6 @@ $config = [
             'customWithParams' => function ($string, $params) {
                 return str_replace(';', '', $string).implode('', $params);
             }
-        ],
-        /**
-         * Discard every line that contains this values
-         */
-        'discard_contains' => [
-            //
-        ],
-        /**
-         * When this string was found, the file processing ends!
-         */ 
-        'end_file_string' => 'rodape'
+        ]
     ]
 ];
