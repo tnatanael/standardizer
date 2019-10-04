@@ -65,8 +65,14 @@ class Standardizer extends CLI
             $this->validate_error('Input file not found');
         }
 
-        // Instantiate the parser
+        // Create the parser instance
         $parser = ParserFactory::create($parserName);
+
+        // Create the exporter instance
+        $exporter = ExporterFactory::create($inputFilePath);
+
+        // Create the converter instance
+        $exporter = ConverterFactory::create($parser, $exporter);
     }
 
     /**

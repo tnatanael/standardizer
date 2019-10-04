@@ -9,8 +9,8 @@ use Standardizer\Filesystem;
 
 final class ExporterTest extends TestCase
 {
-    private $emptyFileToExport = 'tests/assets/empty.xls'; 
-    private $expectedRawOutput = 'raw/empty.csv';
+    private $emptyFileToExport = 'tests/assets/empty.xls';
+    private $expectedRawOutput = 'temp/raw.csv';
 
     public function testCanICreateAExporterFromClass() : Exporter
     {
@@ -38,7 +38,7 @@ final class ExporterTest extends TestCase
      */
     public function testCanIGetTheRawFilePath(Exporter $exporter) : void
     {
-        $this->assertEquals($this->expectedRawOutput, $exporter->getRawFilePath());
+        $this->assertEquals($this->expectedRawOutput, $exporter->getTempFilePath());
     }
 
     /**

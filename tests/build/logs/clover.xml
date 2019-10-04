@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1570123183">
-  <project timestamp="1570123183">
+<coverage generated="1570195043">
+  <project timestamp="1570195043">
     <file name="/home/standardizer/src/ConverterTest.php">
       <class name="ConverterTest" namespace="global">
         <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="0" elements="42" coveredelements="0"/>
@@ -80,42 +80,16 @@
     </file>
     <file name="/home/standardizer/src/Factories/ConverterFactoryTest.php">
       <class name="ConverterFactoryTest" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="33" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
       </class>
-      <line num="14" type="method" name="setUp" visibility="protected" complexity="1" crap="2.00" count="0"/>
-      <line num="15" type="stmt" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="27" type="method" name="testCanICreateAUniondataDefaultCadastroConverterFromFactory" visibility="public" complexity="1" crap="2.00" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="35" type="method" name="testCanICreateAUniondataDefaultCobrancaConverterFromFactory" visibility="public" complexity="1" crap="2.00" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="43" type="method" name="testCanICreateAUniondataAcordoCobrancaConverterFromFactory" visibility="public" complexity="1" crap="2.00" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <metrics loc="49" ncloc="49" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="33" coveredelements="0"/>
+      <line num="13" type="method" name="testCanICreateAConverterFromFactory" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <metrics loc="25" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
     </file>
     <file name="/home/standardizer/src/Factories/ExporterFactoryTest.php">
       <class name="ExporterFactoryTest" namespace="global">
@@ -261,21 +235,37 @@
     </file>
     <file name="/home/standardizer/src/ParserTest.php">
       <class name="ParserTest" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="27" coveredelements="0"/>
       </class>
-      <line num="11" type="method" name="testCanICreateAParserInstance" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="13" type="stmt" count="1"/>
-      <line num="14" type="stmt" count="1"/>
-      <line num="15" type="stmt" count="1"/>
-      <line num="16" type="stmt" count="1"/>
-      <line num="17" type="stmt" count="1"/>
-      <line num="20" type="stmt" count="1"/>
-      <line num="26" type="method" name="testCanIParseAComplexStringWithDelimiterInsideQuotes" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="28" type="stmt" count="1"/>
-      <line num="29" type="stmt" count="1"/>
-      <line num="31" type="stmt" count="1"/>
-      <metrics loc="31" ncloc="28" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+      <line num="11" type="method" name="testCanICreateAParserInstance" visibility="public" complexity="1" crap="2.00" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="26" type="method" name="testCanIDecodeALineMapper" visibility="public" complexity="1" crap="2.00" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="42" type="method" name="testCanIParseAComplexStringWithDelimiterInsideQuotes" visibility="public" complexity="1" crap="2.00" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <metrics loc="47" ncloc="41" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="27" coveredelements="0"/>
     </file>
-    <metrics files="10" loc="391" ncloc="356" classes="10" methods="28" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="187" coveredstatements="9" elements="215" coveredelements="11"/>
+    <metrics files="10" loc="383" ncloc="341" classes="10" methods="26" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="179" coveredstatements="6" elements="205" coveredelements="7"/>
   </project>
 </coverage>

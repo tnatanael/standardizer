@@ -17,6 +17,7 @@ class Exporter
     protected $outputFilePath;
     protected $rawFilePath;
 
+    // Local config cache
     protected $config;
 
     /**
@@ -24,8 +25,8 @@ class Exporter
      */
     public function __construct(string $inputFilePath)
     {
-        // Load config to local object
-        $this->config = config('exporter');
+        // Load global config to local cache
+        $this->config = config('global');
         // Input file path
         $this->inputFilePath = $inputFilePath;
         // Get file info from file path
@@ -38,8 +39,8 @@ class Exporter
             $this->inputFilePath
         );
 
-        // Create the raw file path
-        $this->rawFilePath = $this->config->get('raw_folder').basename($this->outputFilePath);
+        // Create the temp file path
+        $this->tempFilePath = $this->config->get('temp_folder').'raw.csv';
     }
 
     /**
@@ -60,8 +61,8 @@ class Exporter
         // Create the writer factory instance
         $writer = WriterFactory::create($spreadsheet, $this->outputFilePath);
 
-        // Save raw conversion output
-        $writer->save($this->rawFilePath);
+        // Save temp conversion output
+        $writer->save($this->tempFilePath);
     }
 
     /**
@@ -75,22 +76,22 @@ class Exporter
     }
 
     /**
-     * Get the raw file path
+     * Get the temp file path
      *
-     * @return string The path to the raw file that exporter generates
+     * @return string The path to the temp raw file that exporter generates
      **/
-    public function getRawFilePath()
+    public function getTempFilePath()
     {
-        return $this->rawFilePath;
+        return $this->tempFilePath;
     }
 
     /**
-     * undocumented function summary
+     * Decode a column letter to integer
      *
      * @param string $column Column to get index from
      * @return int
      **/
-    public function columnIndex(string $column)
+    public static function columnIndex(string $column)
     {
         return Coordinate::columnIndexFromString($column);
     }

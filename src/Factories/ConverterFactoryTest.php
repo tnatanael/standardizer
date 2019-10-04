@@ -4,47 +4,23 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Standardizer\Factories\ExporterFactory;
+use Standardizer\Factories\ParserFactory;
 
 final class ConverterFactoryTest extends TestCase
 {
-    private $uniondataCadastroExporter;
-    private $uniondataDefaultCobrancaExporter;
-    private $uniondataAcordoCobrancaExporter;
+    private $emptyFileToExport = 'tests/assets/empty.xls';
 
-    protected function setUp() : void
+    public function testCanICreateAConverterFromFactory(): void
     {
-        $this->uniondataCadastroExporter = ExporterFactory::create(
-            'tests/assets/uniondata/cadastro/default/cadastro.xls'
-        );
-        $this->uniondataDefaultCobrancaExporter = ExporterFactory::create(
-            'tests/assets/uniondata/cobranca/default/inadimplencia.xls'
-        ); 
-        $this->uniondataAcordoCobrancaExporter = ExporterFactory::create(
-            'tests/assets/uniondata/cobranca/acordo/acordos.xls'
-        );
-    }
+        // Create the parser instance
+        $parser = ParserFactory::create('testing');
 
-    public function testCanICreateAUniondataDefaultCadastroConverterFromFactory(): void
-    {
+        // Create the exporter instance
+        $exporter = ExporterFactory::create($this->emptyFileToExport);
+
         $this->assertInstanceOf(
-            Standardizer\Converters\CadastroConverter::class,
-            Standardizer\Factories\ConverterFactory::create($this->uniondataCadastroExporter)
-        );
-    }
-
-    public function testCanICreateAUniondataDefaultCobrancaConverterFromFactory(): void
-    {
-        $this->assertInstanceOf(
-            Standardizer\Converters\CobrancaConverter::class,
-            Standardizer\Factories\ConverterFactory::create($this->uniondataDefaultCobrancaExporter)
-        );
-    }
-
-    public function testCanICreateAUniondataAcordoCobrancaConverterFromFactory(): void
-    {
-        $this->assertInstanceOf(
-            Standardizer\Converters\CobrancaConverter::class,
-            Standardizer\Factories\ConverterFactory::create($this->uniondataAcordoCobrancaExporter)
+            Standardizer\Converter::class,
+            Standardizer\Factories\ConverterFactory::create($parser, $exporter)
         );
     }
 }

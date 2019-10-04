@@ -16,7 +16,7 @@ final class WriterFactoryTest extends TestCase
             PhpOffice\PhpSpreadsheet\Writer\IWriter::class,
             Standardizer\Factories\WriterFactory::create(
                 $spreadsheet,
-                ucfirst(config('exporter')->get('output_type'))
+                ucfirst(config('global')->get('output_type'))
             )
         );
     }

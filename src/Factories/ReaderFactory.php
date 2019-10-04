@@ -10,7 +10,7 @@ class ReaderFactory
     public static function create($extension)
     {
         //Determine the reader format by the file extension
-        if (!in_array($extension, config('exporter')->get('supported_extensions'))) {
+        if (!in_array($extension, config('global')->get('supported_extensions'))) {
             throw new \Exception('Arquivo não suportado!');
         }
 

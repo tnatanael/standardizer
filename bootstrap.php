@@ -11,5 +11,11 @@ use Configula\ConfigFactory as Config;
  * @return Config
  */
 function config($file) {
-    return Config::loadPath('config/'.$file.'.php');
+    $path = 'config/';
+
+    // Load configuration from tests for testing 
+    if (defined('TESTING')) {
+        $path = 'tests/config/';
+    }
+    return Config::loadPath($path.$file.'.php');
 }

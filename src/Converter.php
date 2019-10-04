@@ -19,21 +19,19 @@ class Converter
     protected $tempFilePath;
 
     protected $parser;
+    protected $exporter;
 
     /**
      * Class constructor.
      */
-    public function __construct(Parser $parser){
-        // Prevent base converter instantiation
-        if (get_parent_class($this) == '') {
-            throw new \Exception('Classe não instanciável, use uma Factory');
-        }
-        
-        // Store the parser reference
+    public function __construct(Parser $parser, Exporter $exporter)
+    {
+        // Store the references
         $this->parser = $parser;
+        $this->exporter = $exporter;
 
-        // Get the output folder from converters config
-        $this->outputFolder = config('converters')->get('output_folder');
+        // Get the output folder from config
+        $this->outputFolder = config('global')->get('output_folder');
     }
 
     /**

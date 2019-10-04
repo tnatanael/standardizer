@@ -12,9 +12,12 @@ class ParserOptions
         'discard_bottom',
         'row_counter',
         'mapper',
+        'custom_steps',
         'discard_contains',
         'end_file_string'
     ];
+
+    private $values = [];
 
     /**
      * Class constructor.
@@ -22,10 +25,11 @@ class ParserOptions
     public function __construct(array $parserConfig)
     {
         // Bind parameters to options
-        foreach (array_keys($parserConfig) as $key) {
+        foreach ($parserConfig as $key => $value) {
             if (!in_array($key, $this->options)) {
-                throw new Exception("Config parameter not set: ".$key);
+                throw new \Exception("Config parameter not set: ".$key);
             }
+            $this->values[$key] = $value;
         }
     }
 
@@ -41,11 +45,11 @@ class ParserOptions
             return $this->options;
         }
 
-        if (!isset($this->options[$option])) {
-            throw new Exception("Invalid option: ".$option);
+        if (!isset($this->values[$option])) {
+            throw new \Exception("Invalid option: ".$option);
         }
 
-        return $this->options[$option];
+        return $this->values[$option];
     }
     
 }
