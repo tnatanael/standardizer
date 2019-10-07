@@ -10,7 +10,18 @@ Talvez no futuro tenhamos uma IA que faça isso, quem sabe...
 
 ## Instalação
 
+Clonar o repositório:
 
+```
+git clone https://github.com/tnatanael/standardizer.git
+```
+
+Instalar as dependências
+```
+composer install
+```
+
+OBS: O comando acima precisa executar com sucesso, sem erros ou falhas, é provavel que ele necessite instalar alguma dependência do php, faça a instalação usando o apt.
 
 ## Configuração
 
