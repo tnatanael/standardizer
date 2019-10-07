@@ -72,7 +72,11 @@ class Standardizer extends CLI
         $exporter = ExporterFactory::create($inputFilePath);
 
         // Create the converter instance
-        $exporter = ConverterFactory::create($parser, $exporter);
+        $converter = ConverterFactory::create($parser, $exporter);
+
+        $converter->run();
+
+        $this->info("Output file generated at: ".$converter->getOutputFilePath());
     }
 
     /**

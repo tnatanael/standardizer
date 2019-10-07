@@ -45,6 +45,31 @@ final class ConverterTest extends TestCase
         $converter = new Converter($parser, $exporter);
 
         $converter->run();
+
+        $this->assertFileExists('output/test.csv');
+        $this->assertFileEquals('tests/assets/test.csv', 'output/test.csv');
+
+        //Remore generated test file
+        unlink('output/test.csv');
+    }
+
+    public function testCanIConvertAXlsFileWithEndOfFile(): void
+    {
+        // Create the parser instance
+        $parser = ParserFactory::create('testing');
+
+        // Create the exporter instance
+        $exporter = ExporterFactory::create('tests/assets/test_end_of_file.xls');
+
+        // Create the converter instance
+        $converter = new Converter($parser, $exporter);
+
+        $converter->run();
+
+        $this->assertFileExists('output/test_end_of_file.csv');
+        
+        //Remore generated test file
+        unlink('output/test_end_of_file.csv');
     }
 
     /**
@@ -53,9 +78,10 @@ final class ConverterTest extends TestCase
     public function testCanIGetFieldsToImplode(Converter $converter): void
     {
         $this->assertEquals([
-            "split_and_equals_test",
+            "split_test",
+            "equals_test",
             "number_test",
-            "phone_test"
+            "phone_test",
         ], $converter->getFieldsToImplode());
     }
 
@@ -105,16 +131,16 @@ final class ConverterTest extends TestCase
         $this->assertEquals(18, count($resultLines));
     }
 
-    public function testCanIGetAConcatenatedLinesResult() : void
+    public function testCanIGetASummarizedLinesResult() : void
     {
         $every = 2;
         $lines = Filesystem::getLines($this->fileToCutTest);
-        $resultLines = Converter::concatenateLines($lines, $every);
+        $resultLines = Converter::summarizeLines($lines, $every);
 
         // Need to result in 10 lines after concat
         $this->assertEquals(10, count($resultLines));
 
-        // First line need to contains 12
-        $this->assertEquals($resultLines[0], "12");
+        // First line need to contains 1 and 2
+        $this->assertEquals($resultLines[0], ["1","2"]);
     }
 }

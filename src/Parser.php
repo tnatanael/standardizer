@@ -13,6 +13,8 @@ class Parser
     private $delimiter;
     private $current_mapper_field;
 
+    private $previous_values;
+
     /**
      * Class constructor.
      */
@@ -35,6 +37,10 @@ class Parser
     {
         // Explode the lines to parse text
         foreach($linesArray as $line) {
+            // Detects empty lines and discards
+            if (str_replace('""', '', str_replace(',','', $line)) == '') {
+                return [];
+            }
             $linesToParse[] = $this->split($this->delimiter, $line);
         }
 
@@ -42,10 +48,13 @@ class Parser
         foreach($this->options->get('mapper') as $field => $parseString) {
             // Set the current mapper field
             $this->current_mapper_field = $field;
+
             // Decode the parse string to find the steps and execute them
             $stepsData = $this->split(';', $parseString);
-            // Define the line param to empty
-            $lineOutput = '';
+
+            // Clean the position output
+            $positionOutput = '';
+
             // Execute the steps
             foreach($stepsData as $stepString) {
                 $stepData = [];
@@ -69,17 +78,23 @@ class Parser
                 // Call the step passing the array of parâmeters
                 $stepData['function'] = $stepData['name'].'Step';
 
-                // The first position call receives array, the others receive string
-                if ($lineOutput == '') {
-                    $lineOutput = $linesToParse;
-                }
-
                 // Execute step and store the return
                 $fn = $stepData['function'];
-                $lineOutput = $this->$fn($lineOutput, $stepData['params']);
+
+                // Set the input for the position step, the other steps receives the result string
+                if ($fn == 'positionStep') {
+                    $positionOutput = $linesToParse;
+                }
+
+                // Run the step and get the result
+                $positionOutput = $this->$fn($positionOutput, $stepData['params']);
             }
 
-            $parsedLine[$field] = $lineOutput;
+            // Trim whitespaces
+            $parsedLine[$field] = trim($positionOutput, ' ');
+
+            // Save value to previous_values
+            $this->previous_values[$field] = $positionOutput;
         }
 
         return $parsedLine;
@@ -133,7 +148,7 @@ class Parser
                 "Wrong column in position step field ".$this->current_mapper_field." value: ".$params[0]
             );
         }
-        // Trim quotes from line to return
+        // Trim quotes from position to return
         return trim($lines[$lineIndex][$columnInt],'"');    
     }
 
@@ -198,8 +213,18 @@ class Parser
         // Trim the separator parameter
         $check = trim($params[0], '"');
 
+        // Check for SELF keyword
         $value_if_true = ($params[1] == 'SELF') ? $string:$params[1];
         $value_if_false = ($params[2] == 'SELF') ? $string:$params[2];
+
+        // Check for the PREV keyword
+        if ($params[1] == 'PREV') {
+            $value_if_true = @$this->previous_values[$this->current_mapper_field];
+        }
+
+        if ($params[2] == 'PREV') {
+            $value_if_false = @$this->previous_values[$this->current_mapper_field];
+        }
 
         return ($check == $string) ? trim($value_if_true, '"') : trim($value_if_false, '"');
     }

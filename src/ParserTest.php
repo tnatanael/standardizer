@@ -31,7 +31,8 @@ final class ParserTest extends TestCase
             '"7","8","(19)999999999  (21)33333333"'
         ];
         $result = $parser->parseLines($lines);
-        $this->assertEquals("", $result['split_and_equals_test']);
+        $this->assertEquals("X", $result['split_test']);
+        $this->assertEquals("", $result['equals_test']);
         $this->assertEquals("NNN", $result['number_test']);
         $this->assertEquals("199999999992133333333123", $result['phone_test']);
     }

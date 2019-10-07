@@ -10,7 +10,7 @@ final class ParserFactoryTest extends TestCase
     {
         $this->assertInstanceOf(
             Standardizer\Parser::class,
-            Standardizer\Factories\ParserFactory::create('case1')
+            Standardizer\Factories\ParserFactory::create('testing')
         );
     }
 }

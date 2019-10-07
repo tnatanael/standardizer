@@ -9,7 +9,7 @@ final class ParserOptionsTest extends TestCase
 {
     public function testCanICreateAParserInstance(): void
     {
-        $options = new ParserOptions(config('parsers')->get('case1'));
+        $options = new ParserOptions(config('parsers')->get('testing'));
         $this->assertInstanceOf(
             ParserOptions::class,
             $options

@@ -10,7 +10,7 @@ final class ExporterFactoryTest extends TestCase
     {
         $this->assertInstanceOf(
             Standardizer\Exporter::class,
-            Standardizer\Factories\ExporterFactory::create('test')
+            Standardizer\Factories\ExporterFactory::create('tests/assets/empty.xls')
         );
     }
 }

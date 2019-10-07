@@ -20,6 +20,8 @@ class Converter
     protected $parser;
     protected $exporter;
 
+    protected $delimiter;
+
     /**
      * Class constructor.
      */
@@ -38,6 +40,19 @@ class Converter
             config('global')->get('output_type'),
             $this->exporter->getInputFilePath()
         );
+
+        // Delimiter
+        $this->delimiter = config('global')->get('delimiter');
+    }
+
+    /**
+     * Get this outputFilePath
+     *
+     * @return string Output path
+     **/
+    public function getOutputFilePath()
+    {
+        return $this->outputFilePath;
     }
 
     /**
@@ -48,6 +63,9 @@ class Converter
      **/
     public function run() : void
     {
+        // Parser options bind
+        $options = $this->parser->options;
+
         // Create file for converted output
         $this->outputFile = Filesystem::createResource(
             basename($this->outputFilePath)
@@ -56,7 +74,7 @@ class Converter
         // Write header to converted output file based on standard
         Filesystem::writeLine(
             $this->outputFile,
-            implode(',', $this->getFieldsToImplode())
+            implode($this->delimiter, $this->getFieldsToImplode())
         );
 
         // Execute exporter
@@ -65,28 +83,40 @@ class Converter
         // Get the raw csv lines
         $lines = Filesystem::getLines($this->exporter->getTempFilePath());
 
-        // Parser options bind
-        $options = $this->parser->options;
-
         //Execute default steps
         $lines = self::cutTop($lines, $options->get('discard_top'));
         $lines = self::cutBottom($lines, $options->get('discard_bottom'));
         $lines = self::cutContains($lines, $options->get('discard_contains'));
 
         //Execute line sumarization rule
-        $lines = self::summarizeLines($lines, $options->get('data_line_count'));
-
-        dd($lines);
+        $lines = self::summarizeLines($lines, $options->get('line_counter'));
 
         //Run the parser logic implemented by the child
         $parsedLines = [];
 
-        foreach($lines as $lineText)
-        {   
-            $parsedLines[] = $this->parser->parseLines($lineText);
-        }
+        foreach($lines as $linesText)
+        {
+            // Detects the enf of file if set and exit
+            if ($options->get('end_file_string') != '') {
+                foreach($linesText as $lineText) {
+                    // Finalize file processing when string found
+                    if (Str::create($lineText)->contains($options->get('end_file_string'))) {
+                        // Exit run function
+                        return;
+                    }
+                }
+            }
+            
+            $parsedLines = $this->parser->parseLines($linesText);
 
-        dd($parsedLines);
+            // Detect if the line has contents parsed
+            if ($parsedLines != []) {
+                Filesystem::writeLine(
+                    $this->outputFile,
+                    "\n".implode($this->delimiter, $parsedLines)
+                );
+            }
+        }
     }
 
     /**
@@ -173,9 +203,6 @@ class Converter
      **/
     public static function summarizeLines(array $lines, int $every)
     {
-        // No need to run concatenation in this case
-        if ($every == 1) return $lines;
-
         // Concatenation result
         $result = [];
         // Line concatenation index
@@ -200,5 +227,4 @@ class Converter
         }
         return $result;
     }
-
 }

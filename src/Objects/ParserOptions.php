@@ -10,7 +10,7 @@ class ParserOptions
     private $options = [
         'discard_top',
         'discard_bottom',
-        'data_line_count',
+        'line_counter',
         'mapper',
         'custom_steps',
         'discard_contains',

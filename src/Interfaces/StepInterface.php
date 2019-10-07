@@ -1,6 +1,6 @@
 <?php namespace Standardizer\Interfaces;
 
-interface ConverterInterface 
+interface StepInterface 
 {
     // TODO
 }
