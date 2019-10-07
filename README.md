@@ -1,4 +1,4 @@
-#"Padronizador" e "Conversor" de planilhas estruturadas
+# "Padronizador" e "Conversor" de planilhas estruturadas
 
 Esta aplicação converte planilhas estruturadas em arquivos de saida modificados para que sejam importados em sistemas de maneira automática, evitando a necessidade de retrabalho manual ou readequações de código.
 
@@ -8,16 +8,17 @@ O parseamento de planilhas é baseado em padrões, ou seja, para que seja possível
 
 Talvez no futuro tenhamos uma IA que faça isso, quem sabe...
 
-##Instalação
-TODO
+## Instalação
 
-##Configuração
+
+
+## Configuração
 
 Os arquivos de configuração são o ponto principal para que o programa funcione, eles são encontrados da pasta 'config' do projeto, quando você fizer o clone do projeto haverá 2 arquivos com o sulfixo .example.php para utilizalos.
 
 IMPORTANTE: Renomeie os 2 arquivos para global.php e parser.php respectivamente.
 
-###Arquivo global.php
+### Arquivo global.php
 Contém algumas configurações gerais do projeto e da saída gerada, abaixo listadas:
 
 ```
@@ -42,7 +43,7 @@ $config = [
 ];
 ```
     
-###Arquivo parser.php
+### Arquivo parser.php
 Contém as configurações de conversão possíveis dentro do projeto, podemos gerar inúmeros tipos de saida através destas configurações, é importante entender cada uma delas para que você consiga ter versatilidade quando estiver construindo o seu conversor, abaixo a lista de configurações deste arquivo:
 
 ```
@@ -96,7 +97,7 @@ $config = [
 OBS: Neste arquivo você pode definir quantas configurações de parseamento precisar, recomendamos
 também que salve estas configurações em local seguro caso precise utilizar novamente no futuro!
     
-##Utilização
+## Utilização
     
 Para executar o conversor basta chamar o arquivo run.php da seguinte maneira:
 
@@ -107,18 +108,18 @@ O parâmetro -f representa o arquivo a ser processado .
 
 O script suporta também o comando -h, que irá mostrar esta documentação.
 
-##Documentação
+## Documentação
     
-####Mappers
+#### Mappers
 Um mapeador é uma string estruturada que define, a posição do valor a mapear e
 as etapas de mapeamento a serem executadas (steps)
     
-####Steps
+#### Steps
 São etapas de mapeamento, que geram uma saida para o campo definido, e são executadas
 sequencialmente, sendo sua saida injetada no proximo step e finalmente no arquivo de output.
 Cada step aceita seus parâmetros especificos, veja a documentação para exemplos.
 
-####Configurando um Mapper
+#### Configurando um Mapper
 Sintaxe:
 ```
 'position:1,"A";step1:"val1";step2:"valor1","valX"'
@@ -130,7 +131,7 @@ Os mapeador deve ser definido entre aspas simples ''.
 Valores de steps do tipo string são definidos entre aspas duplas "".
 Cada novo step adicionado recebe o valor de saida do ultimo step.
 
-####Lista de Steps Disponíveis
+#### Lista de Steps Disponíveis
 **position step** - Posição do valor na planilha.
 
 Sintaxe:
@@ -215,7 +216,7 @@ Entrada: '(19)999999999  (21)33333333'
 Saida: '19999999999;2133333333'
 
 
-###Criando steps customizados
+### Criando steps customizados
 As vezes é preciso criar um step customizado para aplicar em um determinado campo, ou vários campos.
 Para fazer isso utilize o campo 'custom_steps' no arquivo de configurações da seguinte forma:
 ```
