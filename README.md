@@ -1,36 +1,36 @@
 # "Padronizador" e "Conversor" de planilhas estruturadas
 
-Esta aplicação converte planilhas estruturadas em arquivos de saida modificados para que sejam importados em sistemas de maneira automática, evitando a necessidade de retrabalho manual ou readequações de código.
+Esta aplicaÃ§Ã£o converte planilhas estruturadas em arquivos de saida modificados para que sejam importados em sistemas de maneira automÃ¡tica, evitando a necessidade de retrabalho manual ou readequaÃ§Ãµes de cÃ³digo.
 
-Para este objetivo criamos uma configuração de parseamento, para cada tipo de planilha a converter, é possível configurar multiplas padrões de parseamento, e a ideia é suportar virtualmente qualquer tipo de planilha existente.
+Para este objetivo criamos uma configuraÃ§Ã£o de parseamento, para cada tipo de planilha a converter, Ã© possÃ­vel configurar multiplas padrÃµes de parseamento, e a ideia Ã© suportar virtualmente qualquer tipo de planilha existente.
 
-O parseamento de planilhas é baseado em padrões, ou seja, para que seja possível converter uma planilha automáticamente, é preciso identificar um padrão válido de dados na mesma, e criar uma configuração de extração (parser) baseada neste padrão. 
+O parseamento de planilhas Ã© baseado em padrÃµes, ou seja, para que seja possÃ­vel converter uma planilha automÃ¡ticamente, Ã© preciso identificar um padrÃ£o vÃ¡lido de dados na mesma, e criar uma configuraÃ§Ã£o de extraÃ§Ã£o (parser) baseada neste padrÃ£o. 
 
-Talvez no futuro tenhamos uma IA que faça isso, quem sabe...
+Talvez no futuro tenhamos uma IA que faÃ§a isso, quem sabe...
 
-## Instalação
+## InstalaÃ§Ã£o
 
-Clonar o repositório:
+Clonar o repositÃ³rio:
 
 ```
 git clone https://github.com/tnatanael/standardizer.git
 ```
 
-Instalar as dependências
+Instalar as dependÃªncias
 ```
 composer install
 ```
 
-OBS: O comando acima precisa executar com sucesso, sem erros ou falhas, é provavel que ele necessite instalar alguma dependência do php, faça a instalação usando o apt.
+OBS: O comando acima precisa executar com sucesso, sem erros ou falhas, Ã© provavel que ele necessite instalar alguma dependÃªncia do php, faÃ§a a instalaÃ§Ã£o usando o apt.
 
-## Configuração
+## ConfiguraÃ§Ã£o
 
-Os arquivos de configuração são o ponto principal para que o programa funcione, eles são encontrados da pasta 'config' do projeto, quando você fizer o clone do projeto haverá 2 arquivos com o sulfixo .example.php para utilizalos.
+Os arquivos de configuraÃ§Ã£o sÃ£o o ponto principal para que o programa funcione, eles sÃ£o encontrados da pasta 'config' do projeto, quando vocÃª fizer o clone do projeto haverÃ¡ 2 arquivos com o sulfixo .example.php para utilizalos.
 
 IMPORTANTE: Renomeie os 2 arquivos para global.php e parser.php respectivamente.
 
 ### Arquivo global.php
-Contém algumas configurações gerais do projeto e da saída gerada, abaixo listadas:
+ContÃ©m algumas configuraÃ§Ãµes gerais do projeto e da saÃ­da gerada, abaixo listadas:
 
 ```
 <?php
@@ -40,7 +40,7 @@ $config = [
     // Defines the output folder for processed files
     'output_folder' => 'output/',
     
-    // Temporary folder for pré conversion output
+    // Temporary folder for prÃ© conversion output
     'temp_folder' => 'temp/',
 
     // Defines the output delimiter for csv file
@@ -55,7 +55,7 @@ $config = [
 ```
     
 ### Arquivo parser.php
-Contém as configurações de conversão possíveis dentro do projeto, podemos gerar inúmeros tipos de saida através destas configurações, é importante entender cada uma delas para que você consiga ter versatilidade quando estiver construindo o seu conversor, abaixo a lista de configurações deste arquivo:
+ContÃ©m as configuraÃ§Ãµes de conversÃ£o possÃ­veis dentro do projeto, podemos gerar inÃºmeros tipos de saida atravÃ©s destas configuraÃ§Ãµes, Ã© importante entender cada uma delas para que vocÃª consiga ter versatilidade quando estiver construindo o seu conversor, abaixo a lista de configuraÃ§Ãµes deste arquivo:
 
 ```
 <?php
@@ -105,66 +105,66 @@ $config = [
 ];
 ```
 
-OBS: Neste arquivo você pode definir quantas configurações de parseamento precisar, recomendamos
-também que salve estas configurações em local seguro caso precise utilizar novamente no futuro!
+OBS: Neste arquivo vocÃª pode definir quantas configuraÃ§Ãµes de parseamento precisar, recomendamos
+tambÃ©m que salve estas configuraÃ§Ãµes em local seguro caso precise utilizar novamente no futuro!
     
-## Utilização
+## UtilizaÃ§Ã£o
     
 Para executar o conversor basta chamar o arquivo run.php da seguinte maneira:
 
 php run.php -p my_parser_name -f path/to/inputfile.xls
 
-Onde -p representa um padrão de parseamento configurado no arquivo config/parser.php .
-O parâmetro -f representa o arquivo a ser processado .
+Onde -p representa um padrÃ£o de parseamento configurado no arquivo config/parser.php .
+O parÃ¢metro -f representa o arquivo a ser processado .
 
-O script suporta também o comando -h, que irá mostrar esta documentação.
+O script suporta tambÃ©m o comando -h, que irÃ¡ mostrar esta documentaÃ§Ã£o.
 
-## Documentação
+## DocumentaÃ§Ã£o
     
 #### Mappers
-Um mapeador é uma string estruturada que define, a posição do valor a mapear e
+Um mapeador Ã© uma string estruturada que define, a posiÃ§Ã£o do valor a mapear e
 as etapas de mapeamento a serem executadas (steps)
     
 #### Steps
-São etapas de mapeamento, que geram uma saida para o campo definido, e são executadas
+SÃ£o etapas de mapeamento, que geram uma saida para o campo definido, e sÃ£o executadas
 sequencialmente, sendo sua saida injetada no proximo step e finalmente no arquivo de output.
-Cada step aceita seus parâmetros especificos, veja a documentação para exemplos.
+Cada step aceita seus parÃ¢metros especificos, veja a documentaÃ§Ã£o para exemplos.
 
 #### Configurando um Mapper
 Sintaxe:
 ```
-'position:1,"A";step1:"val1";step2:"valor1","valX"'
+'position:"A",1;step1:"val1";step2:"valor1","valX"'
 ```
 
 IMPORTANTE:
-O primeiro step deve informar a posição do valor desejado (step 'pos').
+O primeiro step deve informar a posiÃ§Ã£o do valor desejado (step 'pos').
 Os mapeador deve ser definido entre aspas simples ''.
-Valores de steps do tipo string são definidos entre aspas duplas "".
+Valores de steps do tipo string sÃ£o definidos entre aspas duplas "".
 Cada novo step adicionado recebe o valor de saida do ultimo step.
 
-#### Lista de Steps Disponíveis
-**position step** - Posição do valor na planilha.
+#### Lista de Steps DisponÃ­veis
+**position step** - PosiÃ§Ã£o do valor na planilha.
 
 Sintaxe:
 ```
 'position:"[column_letter]",[Opcional: row_counter_index]'
 ```
 Exemplo: 
-Retorna o valor no indice de linha 1 coluna A para a saida. 
+Retorna o valor no indice de coluna A linha unificada 1 para a saida. 
 Entrada: 'texto do campo'
 ```
-    'campo' => 'position:1,"A"'
+    'campo' => 'position:"A",1'
 ```
 Saida: 'texto do campo'
-IMPORTANTE: O campo index, representa o número da linha contada quando os dados estiverem presentes em multiplas linhas, ele não é necessário e pode ser omitido, caso o processamento seja linha a linha.
+IMPORTANTE: O campo index, representa o nÃºmero da linha contada quando os dados estiverem presentes em multiplas linhas, ele nÃ£o Ã© necessÃ¡rio e pode ser omitido, caso o processamento seja linha a linha.
             
-**split step** - Separa o valor e retorna uma parte baseado na posição.
+**split step** - Separa o valor e retorna uma parte baseado na posiÃ§Ã£o.
 Sintaxe:
 ```
 'split:"[separator]",[index]'
 ```
 Exemplo: 
-Separa o valor na posição usando / e retorna o valor na posição 3
+Separa o valor na posiÃ§Ã£o usando / e retorna o valor na posiÃ§Ã£o 3
 Entrada: 'campo/separado/por/barras'
 ```
 'campo' => 'position:1,"A";split:"/",3'
@@ -190,13 +190,13 @@ Entrada: 'valor_atual'
 ```
 Saida: 'valor_diferente'
 
-Observações:
-Se o *value_if_false* não for informado, a função irá retornar vazio.
-Se o *value_if_true* esteja vazio ou em branco, a função irá retornar vazio.
+ObservaÃ§Ãµes:
+Se o *value_if_false* nÃ£o for informado, a funÃ§Ã£o irÃ¡ retornar vazio.
+Se o *value_if_true* esteja vazio ou em branco, a funÃ§Ã£o irÃ¡ retornar vazio.
 A palavra chave SELF (sem aspas) retorna o valor atual
 A palavra chave PREV (sem aspas) retorna o valor encontrado o mesmo field da linha anterior
             
-**numbers step** - Filtra o valor do campo deixando sómente os números
+**numbers step** - Filtra o valor do campo deixando sÃ³mente os nÃºmeros
 Sintaxe: 
 ```
 'numbers'
@@ -217,7 +217,7 @@ Entrada: '555'
 ```
 Saida: 'NNN'
         
-**custom step** - Executa uma função de step customizada
+**custom step** - Executa uma funÃ§Ã£o de step customizada
 Sintaxe: 'custom:customFunction,[Opcional $param1],[Opcional $param2]'
 Exemplo:
 Entrada: '(19)999999999  (21)33333333'
@@ -228,15 +228,15 @@ Saida: '19999999999;2133333333'
 
 
 ### Criando steps customizados
-As vezes é preciso criar um step customizado para aplicar em um determinado campo, ou vários campos.
-Para fazer isso utilize o campo 'custom_steps' no arquivo de configurações da seguinte forma:
+As vezes Ã© preciso criar um step customizado para aplicar em um determinado campo, ou vÃ¡rios campos.
+Para fazer isso utilize o campo 'custom_steps' no arquivo de configuraÃ§Ãµes da seguinte forma:
 ```
 ...
 'custom_steps' => [
     'customFunction' => function ($string) {
         $phones = explode('  ', $string);
         foreach($phones as $key => $phone) {
-            // Faça seu código
+            // FaÃ§a seu cÃ³digo
             // Returne uma string
         }
     },
@@ -244,7 +244,7 @@ Para fazer isso utilize o campo 'custom_steps' no arquivo de configurações da se
 ...
 ```
 Exemplo: 
-Função utilizada como no exemplo acima
+FunÃ§Ã£o utilizada como no exemplo acima
 ```
 ...
 'custom_steps' => [
@@ -267,7 +267,7 @@ Função utilizada como no exemplo acima
 ...
 ```
 IMPORTANTE:
-O parâmetro principal da função será a string contendo o valor atual da posição corrente.
-O segundo parâmetro é um array contendo todos os parâmetros adicionais informados na configuração do mapper.
-É possível passar N numero de parâmetros para a função customizada.
-A função customizada deve retornar um valor do tipo string.
+O parÃ¢metro principal da funÃ§Ã£o serÃ¡ a string contendo o valor atual da posiÃ§Ã£o corrente.
+O segundo parÃ¢metro Ã© um array contendo todos os parÃ¢metros adicionais informados na configuraÃ§Ã£o do mapper.
+Ã‰ possÃ­vel passar N numero de parÃ¢metros para a funÃ§Ã£o customizada.
+A funÃ§Ã£o customizada deve retornar um valor do tipo string.
