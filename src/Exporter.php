@@ -5,6 +5,8 @@ use Standardizer\Factories\ReaderFactory;
 
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
+use Standardizer\Parser;
+
 /**
  * Create a new standardizer exporter object
  */
@@ -16,16 +18,19 @@ class Exporter
 
     protected $rawFilePath;
 
+    protected $parser;
+
     /**
      * Class constructor.
      */
-    public function __construct(string $inputFilePath)
+    public function __construct(Parser $parser, string $inputFilePath)
     {
         // Input file path
         $this->inputFilePath = $inputFilePath;
         // Get file info from file path
         $this->inputFileInfo = Filesystem::getInfo($inputFilePath);
-
+        // Bind parser
+        $this->parser = $parser;
         // Create the temp file path
         $this->tempFilePath = config('global')->get('temp_folder').'raw.csv';
     }
@@ -47,10 +52,19 @@ class Exporter
      */
     public function run() : void
     {
+        // Get the input extension
+        $inputExtension = $this->inputFileInfo['extension'];
+
+        // In this case use csv
+        if ($inputExtension == 'txt') {
+            $inputExtension = 'csv';
+        }
+
+        // Get the input delimiter if set
+        $delimiter = $this->parser->options->get('delimiter');
+
         // Create the reader
-        $reader = ReaderFactory::create(
-            $this->inputFileInfo['extension']
-        );
+        $reader = ReaderFactory::create($inputExtension, $delimiter);
 
         // Load imput file to reader
         $spreadsheet = $reader->load($this->inputFilePath);

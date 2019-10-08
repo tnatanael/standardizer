@@ -16,7 +16,7 @@ final class ConverterFactoryTest extends TestCase
         $parser = ParserFactory::create('testing');
 
         // Create the exporter instance
-        $exporter = ExporterFactory::create($this->emptyFileToExport);
+        $exporter = ExporterFactory::create($parser, $this->emptyFileToExport);
 
         $this->assertInstanceOf(
             Standardizer\Converter::class,

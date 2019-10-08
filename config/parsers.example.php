@@ -29,6 +29,10 @@ $config = [
          */ 
         'end_file_string' => '', // Default empty
         /**
+         * Input file delimiter ONLY for csv and txt files
+         */
+        'delimiter' => ',', // Default to comma ,
+        /**
          * Mapper configuration rules
          * See more in: http://todo
          */

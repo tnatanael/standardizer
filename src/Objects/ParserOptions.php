@@ -11,6 +11,7 @@ class ParserOptions
         'discard_top',
         'discard_bottom',
         'line_counter',
+        'delimiter',
         'mapper',
         'custom_steps',
         'discard_contains',

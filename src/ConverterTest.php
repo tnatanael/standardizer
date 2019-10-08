@@ -20,7 +20,7 @@ final class ConverterTest extends TestCase
         $parser = ParserFactory::create('testing');
 
         // Create the exporter instance
-        $exporter = ExporterFactory::create($this->emptyFileToExport);
+        $exporter = ExporterFactory::create($parser, $this->emptyFileToExport);
 
         // Create the converter instance
         $converter = new Converter($parser, $exporter);
@@ -39,7 +39,7 @@ final class ConverterTest extends TestCase
         $parser = ParserFactory::create('testing');
 
         // Create the exporter instance
-        $exporter = ExporterFactory::create('tests/assets/test.xls');
+        $exporter = ExporterFactory::create($parser, 'tests/assets/test.xls');
 
         // Create the converter instance
         $converter = new Converter($parser, $exporter);
@@ -59,7 +59,7 @@ final class ConverterTest extends TestCase
         $parser = ParserFactory::create('testing');
 
         // Create the exporter instance
-        $exporter = ExporterFactory::create('tests/assets/test_end_of_file.xls');
+        $exporter = ExporterFactory::create($parser, 'tests/assets/test_end_of_file.xls');
 
         // Create the converter instance
         $converter = new Converter($parser, $exporter);

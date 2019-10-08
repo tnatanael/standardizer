@@ -21,6 +21,10 @@ $config = [
             //
         ],
         /**
+         * Input file delimiter ONLY for csv and txt files
+         */
+        'delimiter' => '	',
+        /**
          * When this string was found, the file processing ends!
          */ 
         'end_file_string' => 'exittest', // Default empty

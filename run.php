@@ -69,7 +69,7 @@ class Standardizer extends CLI
         $parser = ParserFactory::create($parserName);
 
         // Create the exporter instance
-        $exporter = ExporterFactory::create($inputFilePath);
+        $exporter = ExporterFactory::create($parser, $inputFilePath);
 
         // Create the converter instance
         $converter = ConverterFactory::create($parser, $exporter);

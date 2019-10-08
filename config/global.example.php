@@ -12,7 +12,7 @@ $config = [
     'delimiter' => ',',
 
     // Only xls and xlsx are supported by now
-    'supported_extensions' => ['xls', 'xlsx'],
+    'supported_extensions' => ['xls', 'xlsx', 'csv', 'txt'],
 
     // Only csv is supported by now
     'output_type' => 'csv',

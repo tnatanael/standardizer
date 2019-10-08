@@ -47,7 +47,7 @@ $config = [
     'delimiter' => ',',
 
     // Only xls and xlsx are supported by now
-    'supported_extensions' => ['xls', 'xlsx'],
+    'supported_extensions' => ['xls', 'xlsx', 'csv', 'txt'],
 
     // Only csv is supported by now
     'output_type' => 'csv',
@@ -88,6 +88,10 @@ $config = [
          * When this string was found, the file processing ends and the current line is discarded
          */ 
         'end_file_string' => '', // Default empty
+        /**
+         * Input file delimiter ONLY for csv and txt files
+         */
+        'delimiter' => ',', // Default to comma ,
         /**
          * Mapper configuration rules
          * See more in: http://todo
