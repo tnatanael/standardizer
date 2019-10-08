@@ -133,7 +133,7 @@ Cada step aceita seus parâmetros especificos, veja a documentação para exempl
 #### Configurando um Mapper
 Sintaxe:
 ```
-'position:"A",1;step1:"val1";step2:"valor1","valX"'
+'position:A,1;step1:"val1";step2:"valor1","valX"'
 ```
 
 IMPORTANTE:
@@ -147,16 +147,16 @@ Cada novo step adicionado recebe o valor de saida do ultimo step.
 
 Sintaxe:
 ```
-'position:"[column_letter]",[Opcional: row_counter_index]'
+'position:[column_letter],[Opcional: row_counter_index]'
 ```
 Exemplo: 
 Retorna o valor no indice de coluna A linha unificada 1 para a saida. 
 Entrada: 'texto do campo'
 ```
-    'campo' => 'position:"A",1'
+    'campo' => 'position:A,1'
 ```
 Saida: 'texto do campo'
-IMPORTANTE: O campo index, representa o número da linha contada quando os dados estiverem presentes em multiplas linhas, ele não é necessário e pode ser omitido, caso o processamento seja linha a linha.
+IMPORTANTE: O campo opcional index, representa o número da linha contada quando os dados estiverem presentes em multiplas linhas, ele não é necessário e pode ser omitido, caso o processamento seja linha a linha.
             
 **split step** - Separa o valor e retorna uma parte baseado na posição.
 Sintaxe:
@@ -167,7 +167,7 @@ Exemplo:
 Separa o valor na posição usando / e retorna o valor na posição 3
 Entrada: 'campo/separado/por/barras'
 ```
-'campo' => 'position:1,"A";split:"/",3'
+'campo' => 'position:A,1;split:"/",3'
 ```
 Saida: 'por'
             
@@ -179,14 +179,14 @@ Sintaxe:
 Exemplo 1:
 Entrada: 'valor_atual'
 ```
-'campo' => 'position:1,"A";equals:"valor_atual","novo_valor"'
+'campo' => 'position:A,1;equals:"valor_atual","novo_valor"'
 ```
 Saida: 'novo_valor'
 
 Exemplo 2:
 Entrada: 'valor_atual'
 ```
-'campo' => 'position:1,"A";equals:"diferente","novo_valor","valor_diferente"'
+'campo' => 'position:A,1;equals:"diferente","novo_valor","valor_diferente"'
 ```
 Saida: 'valor_diferente'
 
@@ -204,7 +204,7 @@ Sintaxe:
 Exemplo:
 Entrada: '1a2b3c'
 ```
-'campo' => 'position:1,"A";numbers'
+'campo' => 'position:A,1;numbers'
 ```
 Saida: '123'
             
@@ -213,7 +213,7 @@ Sintaxe: 'replace:[valor_original],[novo_valor]'
 Exemplo:
 Entrada: '555'
 ```
-'campo' => 'position:1,"A";replace:"5","N"'
+'campo' => 'position:A,1;replace:"5","N"'
 ```
 Saida: 'NNN'
         
@@ -222,7 +222,7 @@ Sintaxe: 'custom:customFunction,[Opcional $param1],[Opcional $param2]'
 Exemplo:
 Entrada: '(19)999999999  (21)33333333'
 ```
-'campo' => 'position:1,"A";custom:customPhoneParser'
+'campo' => 'position:A,1;custom:customPhoneParser'
 ```
 Saida: '19999999999;2133333333'
 
