@@ -27,13 +27,13 @@ final class ParserTest extends TestCase
     {
         $lines = [
             '"1,X","2","3"',
-            '"4","5a5b5c","6"',
+            '"4","5a5b5c6","6"',
             '"7","8","(19)999999999  (21)33333333"'
         ];
         $result = $parser->parseLines($lines);
         $this->assertEquals("X", $result['split_test']);
         $this->assertEquals("", $result['equals_test']);
-        $this->assertEquals("NNN", $result['number_test']);
+        $this->assertEquals("556", $result['substr_test']);
         $this->assertEquals("199999999992133333333123", $result['phone_test']);
     }
 

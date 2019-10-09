@@ -273,6 +273,52 @@ class Parser
         // Trim the param quotes and replace
         return str_replace(trim($params[0], '"'), trim($params[1], '"'), $string);
     }
+
+    /**
+     * Implements the substr step
+     *
+     * @param string $string String to execute step
+     * @param array $params Parameters to step
+     * [
+     *      string $params[0] - Start index
+     *      string $params[1] - Number of chars to subtract
+     * ]
+     * @return string Returns the string filtered
+     **/
+    public function substrStep(string $string, array $params)
+    {
+        // Validate parameters needed
+        if (!isset($params[0])) {
+            throw new \Exception(
+                "The substr step needs at least one param in field ".$this->current_mapper_field
+            );
+        }
+
+        $start = trim($params[0], '"');
+
+        // Validate for first parameter numeric
+        if (!is_numeric($start)) {
+            throw new \Exception(
+                "Wrong start index in substr step field ".$this->current_mapper_field." value: ".$params[1]
+            );
+        }
+
+        // Reduce start index to get the first position
+        $start--;
+
+        // Validate for second parameter numeric
+        if (isset($params[1])) {
+            if (!is_numeric($params[0])) {
+                throw new \Exception(
+                    "Wrong lenght in substr step field ".$this->current_mapper_field." value: ".$params[1]
+                );
+            }
+            return substr($string, $start, trim($params[1], '"'));
+        }
+
+        // Trim the param quotes and replace
+        return substr($string, $start);
+    }
     
     /**
      * Implements the custom step

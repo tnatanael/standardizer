@@ -1,2 +1,2 @@
-split_test,equals_test,number_test,phone_test
-X,,NNN,199999999992133333333123
+split_test,equals_test,number_test,substr_test,phone_test
+X,,NNN6,556,199999999992133333333123

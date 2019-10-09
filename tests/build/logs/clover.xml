@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1570566653">
-  <project timestamp="1570566653">
+<coverage generated="1570631164">
+  <project timestamp="1570631164">
     <file name="/home/standardizer/src/ConverterTest.php">
       <class name="ConverterTest" namespace="global">
         <metrics complexity="9" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="67" coveredelements="67"/>
@@ -33,46 +33,46 @@
       <line num="78" type="method" name="testCanIGetFieldsToImplode" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="80" type="stmt" count="1"/>
       <line num="81" type="stmt" count="1"/>
-      <line num="85" type="stmt" count="1"/>
       <line num="86" type="stmt" count="1"/>
-      <line num="88" type="method" name="testCanICutRandomTopLines" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="90" type="stmt" count="1"/>
+      <line num="87" type="stmt" count="1"/>
+      <line num="89" type="method" name="testCanICutRandomTopLines" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="91" type="stmt" count="1"/>
       <line num="92" type="stmt" count="1"/>
       <line num="93" type="stmt" count="1"/>
-      <line num="95" type="stmt" count="1"/>
-      <line num="97" type="stmt" count="1"/>
+      <line num="94" type="stmt" count="1"/>
+      <line num="96" type="stmt" count="1"/>
       <line num="98" type="stmt" count="1"/>
       <line num="99" type="stmt" count="1"/>
-      <line num="101" type="method" name="testCanICutRandomBottomLines" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="103" type="stmt" count="1"/>
+      <line num="100" type="stmt" count="1"/>
+      <line num="102" type="method" name="testCanICutRandomBottomLines" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="104" type="stmt" count="1"/>
       <line num="105" type="stmt" count="1"/>
       <line num="106" type="stmt" count="1"/>
-      <line num="108" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="1"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="109" type="stmt" count="1"/>
       <line num="111" type="stmt" count="1"/>
       <line num="112" type="stmt" count="1"/>
-      <line num="114" type="method" name="testCanICutLineThatContains" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="116" type="stmt" count="1"/>
+      <line num="113" type="stmt" count="1"/>
+      <line num="115" type="method" name="testCanICutLineThatContains" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="117" type="stmt" count="1"/>
       <line num="118" type="stmt" count="1"/>
-      <line num="121" type="stmt" count="1"/>
+      <line num="119" type="stmt" count="1"/>
       <line num="122" type="stmt" count="1"/>
-      <line num="124" type="method" name="testCanICutLineEquals" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="126" type="stmt" count="1"/>
+      <line num="123" type="stmt" count="1"/>
+      <line num="125" type="method" name="testCanICutLineEquals" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="127" type="stmt" count="1"/>
       <line num="128" type="stmt" count="1"/>
-      <line num="131" type="stmt" count="1"/>
+      <line num="129" type="stmt" count="1"/>
       <line num="132" type="stmt" count="1"/>
-      <line num="134" type="method" name="testCanIGetASummarizedLinesResult" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="136" type="stmt" count="1"/>
+      <line num="133" type="stmt" count="1"/>
+      <line num="135" type="method" name="testCanIGetASummarizedLinesResult" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="137" type="stmt" count="1"/>
       <line num="138" type="stmt" count="1"/>
-      <line num="141" type="stmt" count="1"/>
-      <line num="144" type="stmt" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="1"/>
       <line num="145" type="stmt" count="1"/>
-      <metrics loc="145" ncloc="108" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="67" coveredelements="67"/>
+      <line num="146" type="stmt" count="1"/>
+      <metrics loc="146" ncloc="109" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="67" coveredelements="67"/>
     </file>
     <file name="/home/standardizer/src/ExporterTest.php">
       <class name="ExporterTest" namespace="global">
@@ -227,7 +227,7 @@
     </file>
     <file name="/home/standardizer/src/Objects/ParserOptionsTest.php">
       <class name="ParserOptionsTest" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="10" coveredelements="8"/>
       </class>
       <line num="10" type="method" name="testCanICreateAParserInstance" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="12" type="stmt" count="1"/>
@@ -235,7 +235,11 @@
       <line num="14" type="stmt" count="1"/>
       <line num="15" type="stmt" count="1"/>
       <line num="17" type="stmt" count="1"/>
-      <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      <line num="19" type="method" name="testCanIGetAnErrorWhenMapperIsEmpty" visibility="public" complexity="1" crap="1.04" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="0"/>
+      <metrics loc="23" ncloc="23" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="10" coveredelements="8"/>
     </file>
     <file name="/home/standardizer/src/ParserTest.php">
       <class name="ParserTest" namespace="global">
@@ -262,6 +266,6 @@
       <line num="48" type="stmt" count="1"/>
       <metrics loc="48" ncloc="42" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="19" coveredelements="19"/>
     </file>
-    <metrics files="10" loc="477" ncloc="408" classes="10" methods="31" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="170" coveredstatements="167" elements="201" coveredelements="195"/>
+    <metrics files="10" loc="484" ncloc="415" classes="10" methods="32" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="173" coveredstatements="169" elements="205" coveredelements="197"/>
   </project>
 </coverage>

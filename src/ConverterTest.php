@@ -81,6 +81,7 @@ final class ConverterTest extends TestCase
             "split_test",
             "equals_test",
             "number_test",
+            "substr_test",
             "phone_test",
         ], $converter->getFieldsToImplode());
     }

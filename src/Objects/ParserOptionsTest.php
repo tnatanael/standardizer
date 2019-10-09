@@ -15,4 +15,10 @@ final class ParserOptionsTest extends TestCase
             $options
         );
     }
+
+    public function testCanIGetAnErrorWhenMapperIsEmpty(): void
+    {
+        $this->expectException(\Exception::class);
+        $options = new ParserOptions(config('parsers')->get('testing_invalid'));
+    }
 }

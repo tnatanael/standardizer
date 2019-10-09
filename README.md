@@ -220,6 +220,19 @@ Entrada: '555'
 'campo' => 'position:A,1;replace:"5","N"'
 ```
 Saida: 'NNN'
+
+**substr step** - Extrai uma parte de uma string pela sua posição
+Sintaxe: 'substr:[indice_inicio],[Opcional: numero_caracteres]'
+Exemplo:
+Entrada: '123'
+```
+'campo' => 'position:A,1;substr:2,1'
+```
+Saida: '2'
+
+Observações:
+O indice de inicio começa a partir de 1
+Se não informado o numero caracteres, será extraido até o final da string
         
 **custom step** - Executa uma função de step customizada
 Sintaxe: 'custom:customFunction,[Opcional $param1],[Opcional $param2]'

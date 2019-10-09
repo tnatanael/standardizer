@@ -32,6 +32,11 @@ class ParserOptions
             }
             $this->values[$key] = $value;
         }
+
+        // Validate empty mapper
+        if (count($this->values['mapper']) == 0) {
+            throw new \Exception('O mapper não foi definido!');
+        }
     }
 
     /**
