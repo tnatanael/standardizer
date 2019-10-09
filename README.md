@@ -197,13 +197,13 @@ Entrada: 'valor_atual'
 ```
 Saida: 'valor_diferente'
 
-OBSERVAÇÕES:  
+IMPORTANTE:  
 Se o *value_if_false* não for informado, a função irá retornar vazio.  
 Se o *value_if_true* esteja vazio ou em branco, a função irá retornar vazio.  
 A palavra chave SELF (sem aspas) retorna o valor atual.  
 A palavra chave PREV (sem aspas) retorna o valor encontrado o mesmo field da linha anterior  
             
-**numbers step** - Filtra o valor do campo deixando sómente os números
+**numbers** - Filtra o valor do campo deixando sómente os números
 Sintaxe: 
 ```
 'numbers'
@@ -224,7 +224,7 @@ Entrada: '555'
 ```
 Saida: 'NNN'
 
-**substr step** - Extrai uma parte de uma string pela sua posição
+**substr** - Extrai uma parte de uma string pela sua posição
 Sintaxe: 'substr:[indice_inicio],[Opcional: numero_caracteres]'
 Exemplo:
 Entrada: '123'
