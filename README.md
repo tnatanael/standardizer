@@ -147,10 +147,9 @@ Os mapeador deve ser definido entre aspas simples ''.
 Valores de steps do tipo string são definidos entre aspas duplas "".  
 Cada novo step adicionado recebe o valor de saida do ultimo step.  
 
-#### Lista de Steps Disponíveis
-**position** - Posição do valor na planilha.
-
-Sintaxe:
+#### Lista de Steps Disponíveis  
+**position** - Posição do valor na planilha  
+Sintaxe:  
 ```
 'position:[column_letter],[Opcional: row_counter_index]'
 ```
@@ -165,8 +164,8 @@ Saida: 'texto do campo'
 IMPORTANTE:  
 O campo opcional index, representa o número da linha contada quando os dados estiverem presentes em multiplas linhas, ele não é necessário e pode ser omitido, caso o processamento seja linha a linha.  
             
-**split** - Separa o valor e retorna uma parte baseado na posição.
-Sintaxe:
+**split** - Separa o valor e retorna uma parte baseado na posição  
+Sintaxe:  
 ```
 'split:"[separator]",[index]'
 ```
@@ -178,8 +177,8 @@ Entrada: 'campo/separado/por/barras'
 ```
 Saida: 'por'
             
-**equals** - Muda o valor de saida caso o valor atual seja igual a um valor especificado
-Sintaxe:
+**equals** - Muda o valor de saida caso o valor atual seja igual a um valor especificado  
+Sintaxe:  
 ```
 'equals:"[valor]","[value_if_true]","[value_if_false]"'
 ```
@@ -203,8 +202,8 @@ Se o *value_if_true* esteja vazio ou em branco, a função irá retornar vazio.
 A palavra chave SELF (sem aspas) retorna o valor atual.  
 A palavra chave PREV (sem aspas) retorna o valor encontrado o mesmo field da linha anterior  
             
-**numbers** - Filtra o valor do campo deixando sómente os números
-Sintaxe: 
+**numbers** - Filtra o valor do campo deixando sómente os números  
+Sintaxe:  
 ```
 'numbers'
 ```
@@ -215,8 +214,11 @@ Entrada: '1a2b3c'
 ```
 Saida: '123'
             
-**replace** - Substitui todas as ocorrencias no valor
-Sintaxe: 'replace:[valor_original],[novo_valor]'
+**replace** - Substitui todas as ocorrencias no valor  
+Sintaxe:  
+```
+'replace:[valor_original],[novo_valor]'
+```
 Exemplo:
 Entrada: '555'
 ```
@@ -224,8 +226,11 @@ Entrada: '555'
 ```
 Saida: 'NNN'
 
-**substr** - Extrai uma parte de uma string pela sua posição
-Sintaxe: 'substr:[indice_inicio],[Opcional: numero_caracteres]'
+**substr** - Extrai uma parte de uma string pela sua posição  
+Sintaxe:  
+```
+'substr:[indice_inicio],[Opcional: numero_caracteres]'
+```
 Exemplo:
 Entrada: '123'
 ```
@@ -237,8 +242,11 @@ IMPORTANTE:
 O indice de inicio começa a partir de 1.  
 Se não informado o numero caracteres, será extraido até o final da string.  
         
-**custom** - Executa uma função de step customizada
-Sintaxe: 'custom:customFunction,[Opcional $param1],[Opcional $param2]'
+**custom** - Executa uma função de step customizada  
+Sintaxe:  
+```
+'custom:customFunction,[Opcional $param1],[Opcional $param2]'
+```
 Exemplo:
 Entrada: '(19)999999999  (21)33333333'
 ```
@@ -264,7 +272,7 @@ Para fazer isso utilize o campo 'custom_steps' no arquivo de configurações da 
 ...
 ```
 Exemplo: 
-Função utilizada como no exemplo acima
+Função utilizada no exemplo de telefone acima
 ```
 ...
 'custom_steps' => [
