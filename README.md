@@ -261,11 +261,18 @@ Para fazer isso utilize o campo 'custom_steps' no arquivo de configurações da 
 ```
 ...
 'custom_steps' => [
-    'customFunction' => function ($string) {
-        $phones = explode('  ', $string);
-        foreach($phones as $key => $phone) {
-            // Faça seu código
-            // Returne uma string
+    'customFunction' => function ($string, $params) {
+        // Arra de parâmetros
+        $erro = $params[0];
+        $alerta = $params[1];
+        
+        // Retorne uma string
+        if ($string == $erro) {
+            return 'ERRO';
+        } else if ($string == $alerta) {
+            return 'ALERTA';
+        } else {/
+            return 'OK';
         }
     },
 ],
