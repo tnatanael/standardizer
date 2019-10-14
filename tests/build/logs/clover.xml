@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1570631164">
-  <project timestamp="1570631164">
+<coverage generated="1571056546">
+  <project timestamp="1571056546">
     <file name="/home/standardizer/src/ConverterTest.php">
       <class name="ConverterTest" namespace="global">
         <metrics complexity="9" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="67" coveredelements="67"/>

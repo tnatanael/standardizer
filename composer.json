@@ -1,5 +1,26 @@
 {
+    "name": "tnatanael/standardizer",
+    "description": "A spreadsheet processor for easy output parsing",
+    "keywords": [
+        "standardizer", "spreadsheet", "xls", "csv", "conversor"
+    ],
+    "homepage": "https://github.com/tnatanael/standardizer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thiago Natanael",
+            "email": "thiago_natanael@msn.com",
+            "homepage": "https://tnatanael.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tnatanael\\Standardizer\\": "src"
+        }
+    },
     "require": {
+        "php" : ">=7.2.19",
         "phpoffice/phpspreadsheet": "^1.9",
         "danielstjules/stringy": "^3.1",
         "caseyamcl/configula": "^3.0",

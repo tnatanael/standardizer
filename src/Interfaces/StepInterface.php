@@ -2,5 +2,8 @@
 
 interface StepInterface 
 {
-    // TODO
+    
+    public function executeStep(string $string): string;
+    public function getStepName(): string;
+
 }
