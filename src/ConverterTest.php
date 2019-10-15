@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace Standardizer\Tests;
 
 use PHPUnit\Framework\TestCase;
 
@@ -53,6 +53,26 @@ final class ConverterTest extends TestCase
         unlink('output/test.csv');
     }
 
+    public function testCanIConvertAXlsFileUsingDinamicMethod(): void
+    {
+        // Create the parser instance
+        $parser = ParserFactory::create('testing_dinamic');
+
+        // Create the exporter instance
+        $exporter = ExporterFactory::create($parser, 'tests/assets/dinamic.xls');
+
+        // Create the converter instance
+        $converter = new Converter($parser, $exporter);
+
+        $converter->run();
+
+        $this->assertFileExists('output/dinamic.csv');
+        $this->assertFileEquals('tests/assets/dinamic_expected.csv', 'output/dinamic.csv');
+
+        //Remore generated test file
+        unlink('output/dinamic.csv');
+    }
+
     public function testCanIConvertAXlsFileWithEndOfFile(): void
     {
         // Create the parser instance
@@ -88,7 +108,7 @@ final class ConverterTest extends TestCase
 
     public function testCanICutRandomTopLines() : void
     {
-        $toCut = random_int(1,19);
+        $toCut = random_int(1, 19);
         $lines = Filesystem::getLines($this->fileToCutTest);
         $originalLinesCount = Filesystem::countLines($this->fileToCutTest);
         $resultLines = Converter::cutTop($lines, $toCut);
@@ -101,7 +121,7 @@ final class ConverterTest extends TestCase
 
     public function testCanICutRandomBottomLines() : void
     {
-        $toCut = random_int(1,19);
+        $toCut = random_int(1, 19);
         $lines = Filesystem::getLines($this->fileToCutTest);
         $originalLinesCount = Filesystem::countLines($this->fileToCutTest);
         $resultLines = Converter::cutBottom($lines, $toCut);
@@ -130,18 +150,5 @@ final class ConverterTest extends TestCase
 
         // Need to result in 19 lines after cut
         $this->assertEquals(18, count($resultLines));
-    }
-
-    public function testCanIGetASummarizedLinesResult() : void
-    {
-        $every = 2;
-        $lines = Filesystem::getLines($this->fileToCutTest);
-        $resultLines = Converter::summarizeLines($lines, $every);
-
-        // Need to result in 10 lines after concat
-        $this->assertEquals(10, count($resultLines));
-
-        // First line need to contains 1 and 2
-        $this->assertEquals($resultLines[0], ["1","2"]);
     }
 }

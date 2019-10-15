@@ -1,7 +1,7 @@
 <?php
- 
+
 // Load bootstrap
-require_once('bootstrap.php');
+require 'bootstrap.php';
 
 // Thyrd party libraries
 use splitbrain\phpcli\CLI;
@@ -16,6 +16,9 @@ use Standardizer\Factories\ExporterFactory;
 use Standardizer\Factories\ParserFactory;
 use Standardizer\Factories\ConverterFactory;
 
+/**
+ * Main Program
+ */
 class Standardizer extends CLI
 {
     public $options;
@@ -23,7 +26,7 @@ class Standardizer extends CLI
     /**
      * Setup options and helpers
      *
-     * @param Options $options
+     * @param  Options $options Array of options
      * @return void
      */
     protected function setup(Options $options)

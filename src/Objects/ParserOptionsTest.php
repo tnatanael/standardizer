@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace Standardizer\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Standardizer\Objects\ParserOptions;

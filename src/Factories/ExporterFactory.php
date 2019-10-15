@@ -1,17 +1,17 @@
 <?php namespace Standardizer\Factories;
 
 use Standardizer\Exporter;
-use Standardizer\Parser;
+use Standardizer\Interfaces\ParserInterface;
 
 /**
  * Exporter factory
  */
 class ExporterFactory
 {
-    public static function create(Parser $parser, string $inputFilePath)
+    public static function create(ParserInterface $parser, string $inputFilePath)
     {
         if (!file_exists($inputFilePath)) {
-            throw new \Exception('Arquivo de input não encontrado!');
+            throw new \Exception('Arquivo de input nï¿½o encontrado!');
         }
 
         return new Exporter($parser, $inputFilePath);

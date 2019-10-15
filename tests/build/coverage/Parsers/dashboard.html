@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/standardizer/src/Objects</title>
+  <title>Dashboard for /home/standardizer/src/Parsers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">/home/standardizer/src</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Objects</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Parsers</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -58,7 +58,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="ParserOptionsTest.php.html#8">Standardizer\Tests\ParserOptionsTest</a></td><td class="text-right">87%</td></tr>
 
        </tbody>
       </table>
@@ -112,7 +111,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="ParserOptionsTest.php.html#19"><abbr title="Standardizer\Tests\ParserOptionsTest::testCanIGetAnErrorWhenMapperIsEmpty">testCanIGetAnErrorWhenMapperIsEmpty</abbr></a></td><td class="text-right">66%</td></tr>
 
        </tbody>
       </table>
@@ -157,7 +155,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,1,0,0], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,3], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -175,7 +173,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,1,0,0,0,1], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,8], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -225,7 +223,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[87.5,2,"<a href=\"ParserOptionsTest.php.html#8\">Standardizer\\Tests\\ParserOptionsTest<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[100,3,"<a href=\"DinamicParserTest.php.html#10\">Standardizer\\Tests\\DinamicParserTest<\/a>"],[100,4,"<a href=\"FixedParserTest.php.html#11\">Standardizer\\Tests\\FixedParserTest<\/a>"],[100,1,"<a href=\"ParserTest.php.html#9\">Standardizer\\Tests\\ParserTest<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -249,7 +247,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"ParserOptionsTest.php.html#10\">Standardizer\\Tests\\ParserOptionsTest::testCanICreateAParserInstance<\/a>"],[66.66666666666666,1,"<a href=\"ParserOptionsTest.php.html#19\">Standardizer\\Tests\\ParserOptionsTest::testCanIGetAnErrorWhenMapperIsEmpty<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"DinamicParserTest.php.html#31\">Standardizer\\Tests\\DinamicParserTest::testCanICreateADinamicParserInstance<\/a>"],[100,1,"<a href=\"DinamicParserTest.php.html#46\">Standardizer\\Tests\\DinamicParserTest::testCanIGetASummarizedLinesResult<\/a>"],[100,1,"<a href=\"DinamicParserTest.php.html#57\">Standardizer\\Tests\\DinamicParserTest::testCanIDecodeALineMapper<\/a>"],[100,1,"<a href=\"FixedParserTest.php.html#15\">Standardizer\\Tests\\FixedParserTest::testCanICreateAFixedParserInstance<\/a>"],[100,1,"<a href=\"FixedParserTest.php.html#30\">Standardizer\\Tests\\FixedParserTest::testCanIDecodeALineMapper<\/a>"],[100,1,"<a href=\"FixedParserTest.php.html#47\">Standardizer\\Tests\\FixedParserTest::testCanIParseAComplexStringWithDelimiterInsideQuotes<\/a>"],[100,1,"<a href=\"FixedParserTest.php.html#56\">Standardizer\\Tests\\FixedParserTest::testCanIGetASummarizedLinesResult<\/a>"],[100,1,"<a href=\"ParserTest.php.html#11\">Standardizer\\Tests\\ParserTest::testCanICreateAParserInstance<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

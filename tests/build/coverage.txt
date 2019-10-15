@@ -1,30 +1,34 @@
 
 
 Code Coverage Report:      
-  2019-10-14 12:35:46      
+  2019-10-15 18:18:26      
                            
  Summary:                  
-  Classes: 70.00% (7/10)   
-  Methods: 87.50% (28/32)  
-  Lines:   97.69% (169/173)
+  Classes: 75.00% (9/12)   
+  Methods: 89.19% (33/37)  
+  Lines:   98.02% (198/202)
 
-ConverterFactoryTest
-  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
-ConverterTest
-  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 58/ 58)
 ExporterFactoryTest
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  5/  5)
 ExporterTest
   Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 23/ 23)
 FilesystemTest
   Methods:  66.67% ( 4/ 6)   Lines:  93.75% ( 30/ 32)
-ParserFactoryTest
-  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
-ParserOptionsTest
-  Methods:  50.00% ( 1/ 2)   Lines:  87.50% (  7/  8)
-ParserTest
-  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 16/ 16)
 ReaderFactoryTest
   Methods:  66.67% ( 2/ 3)   Lines:  92.31% ( 12/ 13)
 WriterFactoryTest
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  8/  8)
+\Standardizer\Tests::Standardizer\Tests\ConverterFactoryTest
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+\Standardizer\Tests::Standardizer\Tests\ConverterTest
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 60/ 60)
+\Standardizer\Tests::Standardizer\Tests\DinamicParserTest
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 15/ 15)
+\Standardizer\Tests::Standardizer\Tests\FixedParserTest
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 22/ 22)
+\Standardizer\Tests::Standardizer\Tests\ParserFactoryTest
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
+\Standardizer\Tests::Standardizer\Tests\ParserOptionsTest
+  Methods:  50.00% ( 1/ 2)   Lines:  87.50% (  7/  8)
+\Standardizer\Tests::Standardizer\Tests\ParserTest
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)

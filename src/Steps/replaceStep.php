@@ -1,4 +1,6 @@
-<?php namespace Standardizer\Steps;
+<?php 
+/*
+namespace Standardizer\Steps;
 
 use Standardizer\Interfaces\StepInterface;
 

@@ -4,7 +4,7 @@
 use Stringy\Stringy as Str;
 
 use Standardizer\Filesystem;
-use Standardizer\Parser;
+use Standardizer\Interfaces\ParserInterface;
 
 /**
  * Defines the base methods for a converter
@@ -25,7 +25,7 @@ class Converter
     /**
      * Class constructor.
      */
-    public function __construct(Parser $parser, Exporter $exporter)
+    public function __construct(ParserInterface $parser, Exporter $exporter)
     {
         // Store the references
         $this->parser = $parser;
@@ -89,32 +89,32 @@ class Converter
         $lines = self::cutContains($lines, $options->get('discard_contains'));
 
         //Execute line sumarization rule
-        $lines = self::summarizeLines($lines, $options->get('line_counter'));
+        $lines = $this->parser->summarizeLines($lines);
 
         //Run the parser logic implemented by the child
         $parsedLines = [];
 
-        foreach($lines as $linesText)
-        {
+        foreach ($lines as $lineSet) {
             // Detects the enf of file if set and exit
             if ($options->get('end_file_string') != '') {
-                foreach($linesText as $lineText) {
+                foreach ($lineSet as $line) {
                     // Finalize file processing when string found
-                    if (Str::create($lineText)->contains($options->get('end_file_string'))) {
+                    if (Str::create($line)->contains($options->get('end_file_string'))) {
                         // Exit run function
                         return;
                     }
                 }
             }
+
+            // if ($this->parser->options->get('mode') == 'dinamic') {
+            //     dd($lineSet);
+            // }
             
-            $parsedLines = $this->parser->parseLines($linesText);
+            $parsedLines = $this->parser->parseLines($lineSet);
 
             // Detect if the line has contents parsed
             if ($parsedLines != []) {
-                Filesystem::writeLine(
-                    $this->outputFile,
-                    "\n".implode($this->delimiter, $parsedLines)
-                );
+                Filesystem::writeLine($this->outputFile, "\n".$parsedLines);
             }
         }
     }
@@ -129,8 +129,7 @@ class Converter
     public static function cutTop(array $lines, int $cut)
     {
         // Discard N top lines
-        foreach($lines as $key => $line)
-        {
+        foreach ($lines as $key => $line) {
             // Advance key to start from 1 and match cut target
             if (($key+1) <= $cut) {
                 unset($lines[$key]);
@@ -146,13 +145,12 @@ class Converter
      *
      * @param array $lines The lines to check
      * @param int $cut The number of lines to cut
-     * @return array New lines array 
+     * @return array New lines array
      **/
     public static function cutBottom(array $lines, int $cut)
     {
         // Discart N bottom lines
-        foreach($lines as $key => $line)
-        {
+        foreach ($lines as $key => $line) {
             // Advance key to start from 1 and match cut target
             if (($key+1) > (count($lines) - $cut)) {
                 unset($lines[$key]);
@@ -173,9 +171,8 @@ class Converter
     public function cutContains(array $lines, array $needles)
     {
         // Check for discard lines with unwanted text
-        foreach($lines as $key => $line)
-        {
-            foreach($needles as $needle) {
+        foreach ($lines as $key => $line) {
+            foreach ($needles as $needle) {
                 if (Str::create($line)->contains($needle)) {
                     unset($lines[$key]);
                 }
@@ -190,41 +187,8 @@ class Converter
      *
      * @return array
      */
-    public function getFieldsToImplode(): array { 
-        return array_keys($this->parser->options->get('mapper'));
-    }
-
-    /**
-     * Summarize lines to simplify parsing
-     *
-     * @param array $var Description
-     * @param int $every Description
-     * @return array New lines array
-     **/
-    public static function summarizeLines(array $lines, int $every)
+    public function getFieldsToImplode(): array
     {
-        // Concatenation result
-        $result = [];
-        // Line concatenation index
-        $index = 0;
-        // Line concatenation buffer
-        $toWrite = [];
-        foreach($lines as $key => $line) {
-            // Increade key to start from 1 instead of 0
-            $key++;
-
-            // Concatenate line to write
-            $toWrite[] = $line;
-
-            // Check for line concatenation moment
-            if (($index+$every) == $key) {
-                $result[] = $toWrite;
-                // Set the current position as concatenation index
-                $index = $key;
-                // Clean summarization buffer
-                $toWrite = [];
-            }
-        }
-        return $result;
+        return array_keys($this->parser->options->get('mapper'));
     }
 }

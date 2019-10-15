@@ -14,8 +14,10 @@ class Filesystem
     public static function scanAllDir(string $dir) : array
     {
         $result = [];
-        foreach(scandir($dir) as $filename) {
-            if ($filename[0] === '.') continue;
+        foreach (scandir($dir) as $filename) {
+            if ($filename[0] === '.') {
+                continue;
+            }
             $filePath = $dir . '/' . $filename;
             if (is_dir($filePath)) {
                 foreach (self::scanAllDir($filePath) as $childFilename) {
@@ -38,7 +40,7 @@ class Filesystem
     {
         $linecount = 0;
         $handle = fopen($file, "r");
-        while(!feof($handle)){
+        while (!feof($handle)) {
             fgets($handle); //Needed to advance the file pointer
             $linecount++;
         }
@@ -50,14 +52,14 @@ class Filesystem
      * Get the inputFile lines array
      *
      * @param string $path Caminho do arquivo
-     * 
+     *
      * @return array
      * @throws \Exception when the file is not found
      **/
     public static function getLines(string $path) : array
     {
         if (!file_exists($path)) {
-            throw new \Exception('Arquivo não encontrado!');
+            throw new \Exception('Arquivo nï¿½o encontrado!');
         }
         $filesize = filesize($path);
         if ($filesize == 0) {
@@ -80,6 +82,10 @@ class Filesystem
     {
         // Get the output folder from config
         $outputFolder = config('global')->get('output_folder');
+
+        // Create output folder if not exists
+        self::makeFolder($outputFolder);
+
         return fopen($outputFolder.$path, "w");
     }
 
@@ -93,7 +99,7 @@ class Filesystem
     public static function writeLine($resource, string $line)
     {
         if (!is_resource($resource)) {
-            throw new \Exception('Recurso inválido!');
+            throw new \Exception('Recurso invï¿½lido!');
         }
         // Write a line to file
         fwrite($resource, $line);
@@ -108,7 +114,7 @@ class Filesystem
     public function closeResource($resource)
     {
         if (!is_resource($resource)) {
-            throw new \Exception('Recurso inválido!');
+            throw new \Exception('Recurso invï¿½lido!');
         }
         fclose($resource);
     }
@@ -123,5 +129,16 @@ class Filesystem
     public static function getInfo(string $path)
     {
         return pathinfo($path);
+    }
+
+    /**
+     * Ensure a output folder exists
+     */
+    public static function makeFolder($path)
+    {
+        // Create the temp folder if not exists
+        if (!file_exists($path)) {
+            mkdir($path, 0755, true);
+        }
     }
 }

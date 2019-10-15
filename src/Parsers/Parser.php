@@ -1,7 +1,7 @@
-<?php namespace Standardizer;
+<?php namespace Standardizer\Parsers;
 
-use Closure;
 use Standardizer\Objects\ParserOptions;
+use Standardizer\Exporter;
 
 /**
  * Document parser class
@@ -10,94 +10,21 @@ class Parser
 {
     public $options;
 
-    private $delimiter;
-    private $current_mapper_field;
+    protected $delimiter;
+    protected $current_mapper_field;
 
-    private $previous_values;
+    protected $previous_values;
 
     /**
      * Class constructor.
      */
     public function __construct(ParserOptions $options)
     {
-        // Stora options in current object
+        // Store options in current object
         $this->options = $options;
 
         // Get delimiter configuration from config
         $this->delimiter = config('global')->get('delimiter');
-    }
-
-    /**
-     * Implements the line parser
-     *
-     * @param array $lineArray Line to be parsed as array of data
-     * @return string $line Line after parsing
-     **/
-    public function parseLines(array $linesArray) : array
-    {
-        // Explode the lines to parse text
-        foreach($linesArray as $line) {
-            // Detects empty lines and discards
-            if (str_replace('""', '', str_replace(',','', $line)) == '') {
-                return [];
-            }
-            $linesToParse[] = $this->split($this->delimiter, $line);
-        }
-
-        //Create empty indexed array from config fields to output
-        foreach($this->options->get('mapper') as $field => $parseString) {
-            // Set the current mapper field
-            $this->current_mapper_field = $field;
-
-            // Decode the parse string to find the steps and execute them
-            $stepsData = $this->split(';', $parseString);
-
-            // Clean the position output
-            $positionOutput = '';
-
-            // Execute the steps
-            foreach($stepsData as $stepString) {
-                $stepData = [];
-                // Decode step data to find parâmeters
-                $stepData['info'] = $this->split(':', $stepString);
-                // If step info returned more than 2 itens, configuration is wrong
-                if (count($stepData['info']) > 2) {
-                    throw new \Exception(
-                        "Wrong step configuration in ".$this->current_mapper_field
-                    );
-                }
-                $stepData['name'] = $stepData['info'][0];
-
-                // If step contains parameters, parse them
-                $stepData['params'] = [];
-                if (isset($stepData['info'][1])) {
-                    // Parse the params string to an array of params
-                    $stepData['params'] = $this->split(',', $stepData['info'][1]);
-                }
-
-                // Call the step passing the array of parâmeters
-                $stepData['function'] = $stepData['name'].'Step';
-
-                // Execute step and store the return
-                $fn = $stepData['function'];
-
-                // Set the input for the position step, the other steps receives the result string
-                if ($fn == 'positionStep') {
-                    $positionOutput = $linesToParse;
-                }
-
-                // Run the step and get the result
-                $positionOutput = $this->$fn($positionOutput, $stepData['params']);
-            }
-
-            // Trim whitespaces
-            $parsedLine[$field] = trim($positionOutput, ' ');
-
-            // Save value to previous_values
-            $this->previous_values[$field] = $positionOutput;
-        }
-
-        return $parsedLine;
     }
 
     /**
@@ -106,7 +33,7 @@ class Parser
      * @param array $lines Lines to get the position and index
      * @param array $params Parameters to step
      * [
-     *      string params[0] - Letter of the spreadsheet column 
+     *      string params[0] - Letter of the spreadsheet column
      *      int params[1] - Optional: Wanted line index default: 1
      * ]
      * @return string Returns the cell content
@@ -149,7 +76,7 @@ class Parser
             );
         }
         // Trim quotes from position to return
-        return trim($lines[$lineIndex][$columnInt],'"');    
+        return trim($lines[$lineIndex][$columnInt], '"');
     }
 
     /**
@@ -190,7 +117,7 @@ class Parser
      * [
      *      string $params[0] - Value to check
      *      string $params[1] - Value to assert if true
-     *      string $params[2] - Value to assert if false 
+     *      string $params[2] - Value to assert if false
      * ]
      * @return string Returns the splited selected position
      **/
@@ -199,7 +126,8 @@ class Parser
         // Validate parameters needed
         if (count($params) > 3) {
             throw new \Exception(
-                "Wrong number of parameters in equals step field ".$this->current_mapper_field." params: ".implode(',', $params)
+                "Wrong number of parameters in equals step field ".$this->current_mapper_field
+                ." params: ".implode(',', $params)
             );
         }
         if (!isset($params[0]) || !isset($params[1])) {
@@ -324,7 +252,7 @@ class Parser
      * Implements the custom step
      *
      * @param string $string String to execute step
-     * @param array $params The custom step can receive any number of extra parâmeters
+     * @param array $params The custom step can receive any number of extra parï¿½meters
      * @return string Returns the string value
      **/
     public function customStep(string $string, array $params)
@@ -349,44 +277,6 @@ class Parser
         unset($params[0]);
         // Execute the step passing extra parameters and return
         return $fn($string, array_values($params));
-    }
-
-    /**
-     * Cadastro line mapper
-     *
-     * @return array
-     */
-    private function cobrancaMapper(array $lineToParse, array $parsedLine): array
-    {
-        // Start line parsing
-        $parsedLine['bloco'] = @explode('/', $lineToParse[1])[0]; //split
-        $parsedLine['bloco'] = ($parsedLine['bloco'] == 0) ? '' : $parsedLine['bloco']; //equals
-        $parsedLine['unidade'] = @explode('/', $lineToParse[1])[1];//split
-        $parsedLine['proprietario_nome'] = @explode('CPF:', $lineToParse[3])[0]; //split
-        $parsedLine['proprietario_cpf/cnpj'] = @explode('CPF:', $lineToParse[3])[1]; //split
-        $parsedLine['proprietario_rg'] = @explode('RG:', $lineToParse[8])[1]; //split
-        $phones = explode('  ', $lineToParse[13]);
-        foreach($phones as $key => $phone) {
-            $phoneCleaned = preg_replace('/[^0-9]/', '', $phone);
-            if ($phoneCleaned == '') {
-                unset($phones[$key]);
-            } else {
-                $phones[$key] = $phoneCleaned;
-            }
-        }
-        $parsedLine['proprietario_telefone'] = implode(";", $phones);
-        $parsedLine['proprietario_email'] = @explode('e-mail:', $lineToParse[18])[1];
-        $parsedLine['proprietario_endereco'] = @$lineToParse[22];
-        $address = explode('  ', @$lineToParse[26]);
-        $city = @explode(' - ', @$address[0])[0];
-        $state = @explode(' - ', @$address[0])[1];
-
-        $parsedLine['proprietario_cep'] = @$address[1];
-        $parsedLine['proprietario_cidade'] = $city;
-        $parsedLine['proprietario_bairro'] = @$address[2];
-        $parsedLine['proprietario_estado'] = $state;
-
-        return $parsedLine;
     }
 
     /**

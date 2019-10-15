@@ -1,9 +1,7 @@
 <?php namespace Standardizer\Factories;
 
-use Stringy\Stringy as Str;
-
 use Standardizer\Exporter;
-use Standardizer\Parser;
+use Standardizer\Interfaces\ParserInterface;
 use Standardizer\Converter;
 
 /**
@@ -11,7 +9,7 @@ use Standardizer\Converter;
  */
 class ConverterFactory
 {
-    public static function create(Parser $parser, Exporter $exporter) : Converter
+    public static function create(ParserInterface $parser, Exporter $exporter) : Converter
     {
         // Instantiate new converter
         return new Converter($parser, $exporter);

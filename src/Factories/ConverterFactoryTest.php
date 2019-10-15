@@ -1,10 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace Standardizer\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Standardizer\Factories\ExporterFactory;
 use Standardizer\Factories\ParserFactory;
+use Standardizer\Factories\ConverterFactory;
+use Standardizer\Converter;
 
 final class ConverterFactoryTest extends TestCase
 {
@@ -19,8 +21,8 @@ final class ConverterFactoryTest extends TestCase
         $exporter = ExporterFactory::create($parser, $this->emptyFileToExport);
 
         $this->assertInstanceOf(
-            Standardizer\Converter::class,
-            Standardizer\Factories\ConverterFactory::create($parser, $exporter)
+            Converter::class,
+            ConverterFactory::create($parser, $exporter)
         );
     }
 }

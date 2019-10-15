@@ -5,7 +5,7 @@ use Standardizer\Factories\ReaderFactory;
 
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
-use Standardizer\Parser;
+use Standardizer\Interfaces\ParserInterface;
 
 /**
  * Create a new standardizer exporter object
@@ -23,7 +23,7 @@ class Exporter
     /**
      * Class constructor.
      */
-    public function __construct(Parser $parser, string $inputFilePath)
+    public function __construct(ParserInterface $parser, string $inputFilePath)
     {
         // Input file path
         $this->inputFilePath = $inputFilePath;
@@ -38,7 +38,7 @@ class Exporter
     /**
      * Return inputFileInfo
      *
-     * @return array 
+     * @return array
      **/
     public function getInputFileInfo() : array
     {
@@ -71,6 +71,9 @@ class Exporter
 
         // Create the writer factory instance
         $writer = WriterFactory::create($spreadsheet);
+
+        // Ensure the folder output exists
+        Filesystem::makeFolder(dirname($this->tempFilePath));
 
         // Save temp conversion output
         $writer->save($this->tempFilePath);
