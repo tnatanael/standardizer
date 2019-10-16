@@ -66,6 +66,8 @@ class Exporter
         // Create the reader
         $reader = ReaderFactory::create($inputExtension, $delimiter);
 
+        //$reader->setReadDataOnly(true);
+
         // Load imput file to reader
         $spreadsheet = $reader->load($this->inputFilePath);
 

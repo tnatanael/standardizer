@@ -28,37 +28,24 @@ class DinamicParser extends Parser implements ParserInterface
     public function parseLines(array $lines) : string
     {
         // Parse the mapper
-        foreach ($this->options->get('mapper') as $field => $parseString) {
-            // Clean the line and get the function name
-            $customFunction = str_replace('dinamic:', '', $parseString);
-
-            // Get the real function closure to execute
-            $function = $this->options->get('custom_steps')[$customFunction];
-
-            // Validate first parameter must contain a valid defined function
-            if (!array_key_exists($customFunction, $this->options->get('custom_steps'))) {
-                throw new \Exception(
-                    "The custom step function is not found: ".$customFunction
-                );
-            }
-
+        foreach ($this->options->get('custom_steps') as $functionName => $parseFunction) {
             // Reflect the function to validate
-            $reflection = new \ReflectionFunction($function);
+            $reflection = new \ReflectionFunction($parseFunction);
 
             // Validate if the custom step is a closure
             if (!$reflection->isClosure()) {
                 throw new \Exception(
-                    "The custom step defined is not a function: ".$customFunction
+                    "The custom step defined is not a function: ".$functionName
                 );
             }
 
             // Execute the step passing extra parameters and return
-            $parsedLineReturn = $function($lines);
+            $parsedLineReturn = $parseFunction($lines);
 
             // Validate the return must be an string
             if (!is_string($parsedLineReturn)) {
                 throw new \Exception(
-                    "The return of custom function must be string in function: ".$customFunction
+                    "The return of custom function must be string in function: ".$functionName
                 );
             }
         }
@@ -92,9 +79,9 @@ class DinamicParser extends Parser implements ParserInterface
                     $result[] = $buffer;
                     $buffer = [];
                 }
-
                 $found = true;
-            } else {
+            }
+            if ($found) {
                 $buffer[] = $line;
             }
         }

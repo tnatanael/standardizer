@@ -11,7 +11,7 @@ class ReaderFactory
     {
         // Determine the reader format by the file extension
         if (!in_array($extension, config('global')->get('supported_extensions'))) {
-            throw new \Exception('Arquivo não suportado!');
+            throw new \Exception('Arquivo nï¿½o suportado!');
         }
 
         // For csv or txt file we need to read the input delimiter config

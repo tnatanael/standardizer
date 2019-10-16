@@ -66,8 +66,12 @@ $config = [
      */
     'my_parser_name' => [
         /**
+         * Mode of operation: fixed, dinamic
+         */
+        'mode' => 'fixed',
+        /**
          * Discard this number of lines from top of file
-         */  
+         */
         'discard_top' => 0, // Default 0 dont discart any top lines
         /**
          * Discard this number of lines from the end of file
@@ -78,6 +82,10 @@ $config = [
          * OBS: If the line count not match a divisor, las lines will be ignored
          */
         'line_counter' => 1, // Default 1 parse input file line by line
+        /**
+         * Divisor text for dinamic mode
+         */
+        'divisor_text' => 'divisor',
         /**
          * Discard every line that contains this values
          */
@@ -125,6 +133,30 @@ O parâmetro -f representa o arquivo a ser processado .
 O script suporta também o comando -h, que irá mostrar esta documentação.
 
 ## Documentação
+
+#### Mode
+Existen 2 modos de operação, o modo *fixed* e o modo *dinamic*.
+O modo fixed permite que façamos o parse de planilhas que tem um segmento de dados de saída contínuo, por exemplo:
+
+```
+A cada 1 linha de entrada 1 linha de saida
+A cada 3 linhas de entrada 1 linha de saida
+A cada 10 linhas de entrada 1 linha de saida
+```
+
+Já o modo *dinamic* que é mais avançado, permite que você crie funções de parseamento gerando um segmento de linhas a partir de um texto especifico. Como por exemplo esta tabela de alturas e idades:
+
+```
+Nome: José
+Idade: 36 anos
+Altura: 1,97m
+Nome: Adriano
+Altura: 1,77m
+Nome: Maicon
+Idade: 27 anos
+```
+
+Observe que, não existe numero fixo de linhas contendo dados, mas o campo nome sempre está presente, portanto podemos usar a string *Nome:* como delimitador de bloco, e criar uma função customizada para capturar algum campo. Esta é a função do modo *dinamic*.
     
 #### Mappers
 Um mapeador é uma string estruturada que define, a posição do valor a mapear e
