@@ -4,6 +4,7 @@ require_once('vendor/autoload.php');
 
 use Configula\ConfigFactory as Config;
 use Stringy\Stringy as Str;
+use Standardizer\Exporter;
 
 /**
  * Configuration getter helper
@@ -30,4 +31,11 @@ function contains($needle, $haystack)
 function split($explode, $string)
 {
     return explode($explode, $string);
+}
+
+function position($column, $line)
+{
+    //Get the column index
+    $index = Exporter::columnIndex($column);
+    return @explode(',', $line)[$index-1];
 }
