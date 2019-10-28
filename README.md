@@ -87,6 +87,10 @@ $config = [
          */
         'divisor_text' => 'divisor',
         /**
+         * The input file encoding for correct parsing Ex: ISO-8859-1
+         */
+        'input_encoding' => 'UTF-8', // Default encoding
+        /**
          * Discard every line that contains this values
          */
         'discard_contains' => [
