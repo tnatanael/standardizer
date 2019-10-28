@@ -29,7 +29,7 @@ class FixedParser extends Parser implements ParserInterface
         foreach ($lines as $line) {
             // Detects empty lines and discards
             if (str_replace('""', '', str_replace(',', '', $line)) == '') {
-                return [];
+                return '';
             }
             $linesToParse[] = $this->split($this->delimiter, $line);
         }

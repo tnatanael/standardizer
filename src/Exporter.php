@@ -22,6 +22,9 @@ class Exporter
 
     /**
      * Class constructor.
+     *
+     * @param $parser        The parser instance
+     * @param $inputFilePath The path to input file
      */
     public function __construct(ParserInterface $parser, string $inputFilePath)
     {
@@ -66,7 +69,10 @@ class Exporter
         // Create the reader
         $reader = ReaderFactory::create($inputExtension, $delimiter);
 
-        //$reader->setReadDataOnly(true);
+        // Encoding configuration is only for input type csv
+        if ($inputExtension == 'csv') {
+            $reader->setInputEncoding('ISO-8859-1');
+        }
 
         // Load imput file to reader
         $spreadsheet = $reader->load($this->inputFilePath);
@@ -105,9 +111,10 @@ class Exporter
      * Decode a column letter to integer
      *
      * @param string $column Column to get index from
+     *
      * @return int
      **/
-    public static function columnIndex(string $column)
+    public static function columnIndex(string $column) : int
     {
         return Coordinate::columnIndexFromString($column);
     }

@@ -46,9 +46,9 @@ final class DinamicParserTest extends TestCase
     public function testCanIGetASummarizedLinesResult(ParserInterface $parser): void
     {
         $result = $parser->summarizeLines($this->lines_mock);
-        $this->assertEquals(['"1"', '"2"'], $result[0]);
-        $this->assertEquals([ '"1"', '"2"', '"3"', '"4"', '"5"'], $result[2]);
-        $this->assertEquals(['"1"', '"2"'], $result[3]);
+        $this->assertEquals(['"divisor"', '"1"', '"2"'], $result[0]);
+        $this->assertEquals(['"divisor"', '"1"', '"2"', '"3"', '"4"', '"5"'], $result[2]);
+        $this->assertEquals(['"divisor"', '"1"', '"2"'], $result[3]);
     }
 
     /**
@@ -59,6 +59,6 @@ final class DinamicParserTest extends TestCase
         $lines = $parser->summarizeLines($this->lines_mock);
         $result = $parser->parseLines($lines[3]);
 
-        $this->assertEquals('"1""2"', $result);
+        $this->assertEquals('"divisor""1""2"', $result);
     }
 }

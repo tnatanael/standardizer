@@ -33,8 +33,12 @@ $config = [
             // Values to discard when found
         ],
         /**
+         * The input file encoding for correct parsing Ex: ISO-8859-1
+         */
+        'input_encoding' => 'UTF-8', // Default encoding
+        /**
          * When this string was found, the file processing ends and the current line is discarded
-         */ 
+         */
         'end_file_string' => '', // Default empty
         /**
          * Input file delimiter ONLY for csv and txt files

@@ -18,6 +18,7 @@ class ParserOptions
         'discard_top',
         'discard_bottom',
         'delimiter',
+        'input_encoding',
         'mapper',
         'custom_steps',
         'discard_contains',
@@ -28,6 +29,8 @@ class ParserOptions
 
     /**
      * Class constructor.
+     *
+     * @param $parserConfig The configuration object for parser
      */
     public function __construct(array $parserConfig)
     {
@@ -42,7 +45,7 @@ class ParserOptions
             case 'fixed':
                 $options = array_merge($this->default_options, $this->fixed_options);
                 break;
-            case 'dinamic';
+            case 'dinamic':
                 $options = array_merge($this->default_options, $this->dinamic_options);
                 break;
             default:
@@ -68,7 +71,10 @@ class ParserOptions
      * Get option value
      *
      * @param string $option Option to get value
+     *
      * @throws Exception When option not found
+     *
+     * @return array
      **/
     public function get(string $option = null)
     {
@@ -86,8 +92,12 @@ class ParserOptions
     /**
      * Set option value
      *
-     * @param string $option Option to get value
+     * @param $option Option to set value
+     * @param $value  Value to set
+     *
      * @throws Exception When option not found
+     *
+     * @return array
      **/
     public function set(string $option = null, $value)
     {

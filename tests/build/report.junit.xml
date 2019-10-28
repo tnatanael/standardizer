@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="src" tests="37" assertions="58" errors="0" failures="0" skipped="0" time="0.736700">
-    <testsuite name="Standardizer\Tests\ConverterTest" file="/home/standardizer/src/ConverterTest.php" tests="9" assertions="17" errors="0" failures="0" skipped="0" time="0.500249">
-      <testcase name="testCanICreateAConverterInstance" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="17" assertions="1" time="0.022055"/>
-      <testcase name="testCanIConvertAXlsFile" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="36" assertions="4" time="0.183840"/>
-      <testcase name="testCanIConvertAXlsFileUsingDinamicMethod" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="56" assertions="4" time="0.147723"/>
-      <testcase name="testCanIConvertAXlsFileWithEndOfFile" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="76" assertions="1" time="0.135581"/>
-      <testcase name="testCanIGetFieldsToImplode" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="98" assertions="1" time="0.001183"/>
-      <testcase name="testCanICutRandomTopLines" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="109" assertions="2" time="0.001891"/>
-      <testcase name="testCanICutRandomBottomLines" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="122" assertions="2" time="0.002134"/>
-      <testcase name="testCanICutLineThatContains" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="135" assertions="1" time="0.003505"/>
-      <testcase name="testCanICutLineEquals" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="145" assertions="1" time="0.002337"/>
+  <testsuite name="src" tests="37" assertions="58" errors="0" failures="0" skipped="0" time="0.742010">
+    <testsuite name="Standardizer\Tests\ConverterTest" file="/home/standardizer/src/ConverterTest.php" tests="9" assertions="17" errors="0" failures="0" skipped="0" time="0.486006">
+      <testcase name="testCanICreateAConverterInstance" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="17" assertions="1" time="0.022984"/>
+      <testcase name="testCanIConvertAXlsFile" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="36" assertions="4" time="0.197463"/>
+      <testcase name="testCanIConvertAXlsFileUsingDinamicMethod" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="56" assertions="4" time="0.134934"/>
+      <testcase name="testCanIConvertAXlsFileWithEndOfFile" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="76" assertions="1" time="0.118781"/>
+      <testcase name="testCanIGetFieldsToImplode" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="98" assertions="1" time="0.001151"/>
+      <testcase name="testCanICutRandomTopLines" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="109" assertions="2" time="0.001965"/>
+      <testcase name="testCanICutRandomBottomLines" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="122" assertions="2" time="0.002232"/>
+      <testcase name="testCanICutLineThatContains" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="135" assertions="1" time="0.004095"/>
+      <testcase name="testCanICutLineEquals" class="Standardizer\Tests\ConverterTest" classname="Standardizer.Tests.ConverterTest" file="/home/standardizer/src/ConverterTest.php" line="145" assertions="1" time="0.002400"/>
     </testsuite>
-    <testsuite name="ExporterTest" file="/home/standardizer/src/ExporterTest.php" tests="5" assertions="8" errors="0" failures="0" skipped="0" time="0.099381">
-      <testcase name="testCanICreateAExporterFromClass" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="17" assertions="1" time="0.005190"/>
-      <testcase name="testCanIGetTheInputFilePath" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="33" assertions="1" time="0.001119"/>
-      <testcase name="testCanIGetTheRawFilePath" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="42" assertions="1" time="0.001090"/>
-      <testcase name="testCanIExportAXlsToCsv" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="50" assertions="1" time="0.073867"/>
-      <testcase name="testCanIExportATxtTabSeparatedToCsv" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="60" assertions="4" time="0.018115"/>
+    <testsuite name="ExporterTest" file="/home/standardizer/src/ExporterTest.php" tests="5" assertions="8" errors="0" failures="0" skipped="0" time="0.105644">
+      <testcase name="testCanICreateAExporterFromClass" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="17" assertions="1" time="0.007002"/>
+      <testcase name="testCanIGetTheInputFilePath" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="33" assertions="1" time="0.001144"/>
+      <testcase name="testCanIGetTheRawFilePath" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="42" assertions="1" time="0.001683"/>
+      <testcase name="testCanIExportAXlsToCsv" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="50" assertions="1" time="0.076397"/>
+      <testcase name="testCanIExportATxtTabSeparatedToCsv" class="ExporterTest" classname="ExporterTest" file="/home/standardizer/src/ExporterTest.php" line="60" assertions="4" time="0.019418"/>
     </testsuite>
-    <testsuite name="Standardizer\Tests\ConverterFactoryTest" file="/home/standardizer/src/Factories/ConverterFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.005534">
-      <testcase name="testCanICreateAConverterFromFactory" class="Standardizer\Tests\ConverterFactoryTest" classname="Standardizer.Tests.ConverterFactoryTest" file="/home/standardizer/src/Factories/ConverterFactoryTest.php" line="15" assertions="1" time="0.005534"/>
+    <testsuite name="Standardizer\Tests\ConverterFactoryTest" file="/home/standardizer/src/Factories/ConverterFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007897">
+      <testcase name="testCanICreateAConverterFromFactory" class="Standardizer\Tests\ConverterFactoryTest" classname="Standardizer.Tests.ConverterFactoryTest" file="/home/standardizer/src/Factories/ConverterFactoryTest.php" line="15" assertions="1" time="0.007897"/>
     </testsuite>
-    <testsuite name="ExporterFactoryTest" file="/home/standardizer/src/Factories/ExporterFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.005342">
-      <testcase name="testCanICreateAExporterInstance" class="ExporterFactoryTest" classname="ExporterFactoryTest" file="/home/standardizer/src/Factories/ExporterFactoryTest.php" line="11" assertions="1" time="0.005342"/>
+    <testsuite name="ExporterFactoryTest" file="/home/standardizer/src/Factories/ExporterFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.003717">
+      <testcase name="testCanICreateAExporterInstance" class="ExporterFactoryTest" classname="ExporterFactoryTest" file="/home/standardizer/src/Factories/ExporterFactoryTest.php" line="11" assertions="1" time="0.003717"/>
     </testsuite>
-    <testsuite name="Standardizer\Tests\ParserFactoryTest" file="/home/standardizer/src/Factories/ParserFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002694">
-      <testcase name="testCanICreateAParserFromFactory" class="Standardizer\Tests\ParserFactoryTest" classname="Standardizer.Tests.ParserFactoryTest" file="/home/standardizer/src/Factories/ParserFactoryTest.php" line="11" assertions="1" time="0.002694"/>
+    <testsuite name="Standardizer\Tests\ParserFactoryTest" file="/home/standardizer/src/Factories/ParserFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002740">
+      <testcase name="testCanICreateAParserFromFactory" class="Standardizer\Tests\ParserFactoryTest" classname="Standardizer.Tests.ParserFactoryTest" file="/home/standardizer/src/Factories/ParserFactoryTest.php" line="11" assertions="1" time="0.002740"/>
     </testsuite>
-    <testsuite name="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.016572">
-      <testcase name="testCanICreateAReaderInstanceForXls" class="ReaderFactoryTest" classname="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" line="9" assertions="1" time="0.003050"/>
-      <testcase name="testCanICreateAReaderInstanceForXlsx" class="ReaderFactoryTest" classname="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" line="17" assertions="1" time="0.010663"/>
-      <testcase name="testICantCreateAUnsupportedReader" class="ReaderFactoryTest" classname="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" line="25" assertions="1" time="0.002859"/>
+    <testsuite name="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.016952">
+      <testcase name="testCanICreateAReaderInstanceForXls" class="ReaderFactoryTest" classname="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" line="9" assertions="1" time="0.003473"/>
+      <testcase name="testCanICreateAReaderInstanceForXlsx" class="ReaderFactoryTest" classname="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" line="17" assertions="1" time="0.009662"/>
+      <testcase name="testICantCreateAUnsupportedReader" class="ReaderFactoryTest" classname="ReaderFactoryTest" file="/home/standardizer/src/Factories/ReaderFactoryTest.php" line="25" assertions="1" time="0.003817"/>
     </testsuite>
-    <testsuite name="WriterFactoryTest" file="/home/standardizer/src/Factories/WriterFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.068206">
-      <testcase name="testCanICreateAWriterInstanceForCsv" class="WriterFactoryTest" classname="WriterFactoryTest" file="/home/standardizer/src/Factories/WriterFactoryTest.php" line="9" assertions="1" time="0.068206"/>
+    <testsuite name="WriterFactoryTest" file="/home/standardizer/src/Factories/WriterFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.068784">
+      <testcase name="testCanICreateAWriterInstanceForCsv" class="WriterFactoryTest" classname="WriterFactoryTest" file="/home/standardizer/src/Factories/WriterFactoryTest.php" line="9" assertions="1" time="0.068784"/>
     </testsuite>
-    <testsuite name="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" tests="6" assertions="10" errors="0" failures="0" skipped="0" time="0.014284">
-      <testcase name="testCanReadInputFolderRecursive" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="12" assertions="1" time="0.002039"/>
-      <testcase name="testCanCountTextFileLines" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="19" assertions="1" time="0.001600"/>
-      <testcase name="testCanIGetTextFileLinesArray" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="27" assertions="2" time="0.001735"/>
-      <testcase name="testCanICreateAnOutputFileInOutputFolder" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="37" assertions="2" time="0.002984"/>
-      <testcase name="testCanIWriteALineToFile" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="53" assertions="2" time="0.004620"/>
-      <testcase name="testCanIGetTextFileInfoArray" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="70" assertions="2" time="0.001306"/>
+    <testsuite name="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" tests="6" assertions="10" errors="0" failures="0" skipped="0" time="0.014573">
+      <testcase name="testCanReadInputFolderRecursive" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="12" assertions="1" time="0.001764"/>
+      <testcase name="testCanCountTextFileLines" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="19" assertions="1" time="0.001488"/>
+      <testcase name="testCanIGetTextFileLinesArray" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="27" assertions="2" time="0.001684"/>
+      <testcase name="testCanICreateAnOutputFileInOutputFolder" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="37" assertions="2" time="0.003322"/>
+      <testcase name="testCanIWriteALineToFile" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="53" assertions="2" time="0.004184"/>
+      <testcase name="testCanIGetTextFileInfoArray" class="FilesystemTest" classname="FilesystemTest" file="/home/standardizer/src/FilesystemTest.php" line="70" assertions="2" time="0.002131"/>
     </testsuite>
-    <testsuite name="Standardizer\Tests\ParserOptionsTest" file="/home/standardizer/src/Objects/ParserOptionsTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.004333">
-      <testcase name="testCanICreateAParserInstance" class="Standardizer\Tests\ParserOptionsTest" classname="Standardizer.Tests.ParserOptionsTest" file="/home/standardizer/src/Objects/ParserOptionsTest.php" line="10" assertions="1" time="0.001964"/>
-      <testcase name="testCanIGetAnErrorWhenMapperIsEmpty" class="Standardizer\Tests\ParserOptionsTest" classname="Standardizer.Tests.ParserOptionsTest" file="/home/standardizer/src/Objects/ParserOptionsTest.php" line="19" assertions="1" time="0.002369"/>
+    <testsuite name="Standardizer\Tests\ParserOptionsTest" file="/home/standardizer/src/Objects/ParserOptionsTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.008620">
+      <testcase name="testCanICreateAParserInstance" class="Standardizer\Tests\ParserOptionsTest" classname="Standardizer.Tests.ParserOptionsTest" file="/home/standardizer/src/Objects/ParserOptionsTest.php" line="10" assertions="1" time="0.004590"/>
+      <testcase name="testCanIGetAnErrorWhenMapperIsEmpty" class="Standardizer\Tests\ParserOptionsTest" classname="Standardizer.Tests.ParserOptionsTest" file="/home/standardizer/src/Objects/ParserOptionsTest.php" line="19" assertions="1" time="0.004030"/>
     </testsuite>
-    <testsuite name="Standardizer\Tests\DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" tests="3" assertions="5" errors="0" failures="0" skipped="0" time="0.007220">
-      <testcase name="testCanICreateADinamicParserInstance" class="Standardizer\Tests\DinamicParserTest" classname="Standardizer.Tests.DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" line="31" assertions="1" time="0.002802"/>
-      <testcase name="testCanIGetASummarizedLinesResult" class="Standardizer\Tests\DinamicParserTest" classname="Standardizer.Tests.DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" line="46" assertions="3" time="0.002257"/>
-      <testcase name="testCanIDecodeALineMapper" class="Standardizer\Tests\DinamicParserTest" classname="Standardizer.Tests.DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" line="57" assertions="1" time="0.002161"/>
+    <testsuite name="Standardizer\Tests\DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" tests="3" assertions="5" errors="0" failures="0" skipped="0" time="0.011895">
+      <testcase name="testCanICreateADinamicParserInstance" class="Standardizer\Tests\DinamicParserTest" classname="Standardizer.Tests.DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" line="31" assertions="1" time="0.004388"/>
+      <testcase name="testCanIGetASummarizedLinesResult" class="Standardizer\Tests\DinamicParserTest" classname="Standardizer.Tests.DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" line="46" assertions="3" time="0.003231"/>
+      <testcase name="testCanIDecodeALineMapper" class="Standardizer\Tests\DinamicParserTest" classname="Standardizer.Tests.DinamicParserTest" file="/home/standardizer/src/Parsers/DinamicParserTest.php" line="57" assertions="1" time="0.004276"/>
     </testsuite>
-    <testsuite name="Standardizer\Tests\FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="0.010198">
-      <testcase name="testCanICreateAFixedParserInstance" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="15" assertions="1" time="0.002889"/>
-      <testcase name="testCanIDecodeALineMapper" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="30" assertions="4" time="0.004246"/>
-      <testcase name="testCanIParseAComplexStringWithDelimiterInsideQuotes" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="47" assertions="1" time="0.001178"/>
-      <testcase name="testCanIGetASummarizedLinesResult" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="56" assertions="2" time="0.001885"/>
+    <testsuite name="Standardizer\Tests\FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" tests="4" assertions="8" errors="0" failures="0" skipped="0" time="0.011716">
+      <testcase name="testCanICreateAFixedParserInstance" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="15" assertions="1" time="0.003649"/>
+      <testcase name="testCanIDecodeALineMapper" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="30" assertions="4" time="0.004864"/>
+      <testcase name="testCanIParseAComplexStringWithDelimiterInsideQuotes" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="47" assertions="1" time="0.001251"/>
+      <testcase name="testCanIGetASummarizedLinesResult" class="Standardizer\Tests\FixedParserTest" classname="Standardizer.Tests.FixedParserTest" file="/home/standardizer/src/Parsers/FixedParserTest.php" line="56" assertions="2" time="0.001952"/>
     </testsuite>
-    <testsuite name="Standardizer\Tests\ParserTest" file="/home/standardizer/src/Parsers/ParserTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002686">
-      <testcase name="testCanICreateAParserInstance" class="Standardizer\Tests\ParserTest" classname="Standardizer.Tests.ParserTest" file="/home/standardizer/src/Parsers/ParserTest.php" line="11" assertions="1" time="0.002686"/>
+    <testsuite name="Standardizer\Tests\ParserTest" file="/home/standardizer/src/Parsers/ParserTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.003466">
+      <testcase name="testCanICreateAParserInstance" class="Standardizer\Tests\ParserTest" classname="Standardizer.Tests.ParserTest" file="/home/standardizer/src/Parsers/ParserTest.php" line="11" assertions="1" time="0.003466"/>
     </testsuite>
   </testsuite>
 </testsuites>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1571163506">
-  <project timestamp="1571163506">
+<coverage generated="1572267369">
+  <project timestamp="1572267369">
     <package name="Standardizer\Tests">
       <file name="/home/standardizer/src/ConverterTest.php">
         <class name="Standardizer\Tests\ConverterTest" namespace="Standardizer\Tests">
@@ -75,7 +75,7 @@
         <line num="149" type="stmt" count="1"/>
         <line num="152" type="stmt" count="1"/>
         <line num="153" type="stmt" count="1"/>
-        <metrics loc="153" ncloc="112" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="69" coveredelements="69"/>
+        <metrics loc="154" ncloc="113" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="69" coveredelements="69"/>
       </file>
       <file name="/home/standardizer/src/Factories/ConverterFactoryTest.php">
         <class name="Standardizer\Tests\ConverterFactoryTest" namespace="Standardizer\Tests">
@@ -115,7 +115,7 @@
         <line num="21" type="stmt" count="1"/>
         <line num="22" type="stmt" count="1"/>
         <line num="23" type="stmt" count="0"/>
-        <metrics loc="23" ncloc="23" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="10" coveredelements="8"/>
+        <metrics loc="24" ncloc="24" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="10" coveredelements="8"/>
       </file>
       <file name="/home/standardizer/src/Parsers/DinamicParserTest.php">
         <class name="Standardizer\Tests\DinamicParserTest" namespace="Standardizer\Tests">
@@ -314,6 +314,6 @@
       <line num="78" type="stmt" count="0"/>
       <metrics loc="78" ncloc="71" classes="1" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="30" elements="38" coveredelements="34"/>
     </file>
-    <metrics files="12" loc="601" ncloc="509" classes="12" methods="37" coveredmethods="33" conditionals="0" coveredconditionals="0" statements="202" coveredstatements="198" elements="239" coveredelements="231"/>
+    <metrics files="12" loc="603" ncloc="511" classes="12" methods="37" coveredmethods="33" conditionals="0" coveredconditionals="0" statements="202" coveredstatements="198" elements="239" coveredelements="231"/>
   </project>
 </coverage>
