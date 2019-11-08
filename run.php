@@ -3,7 +3,7 @@
 // Load bootstrap
 require 'bootstrap.php';
 
-// Thyrd party libraries
+// Third party libraries
 use splitbrain\phpcli\CLI;
 use splitbrain\phpcli\Options;
 use Configula\Exception\ConfigLoaderException;
